@@ -24,6 +24,8 @@ export function createOpenAIRequest(key?: string): typeof openaiRequest {
 async function requestWithKey(key: string | undefined, path: string, body: unknown, timeout: number): Promise<Response> {
   requireKey(key);
   const multipart = body instanceof FormData;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
   let response: Response;
   try {
     response = await fetch(`https://api.openai.com/v1/${path}`, {
@@ -33,11 +35,11 @@ async function requestWithKey(key: string | undefined, path: string, body: unkno
         ...(!multipart && body !== undefined ? { 'Content-Type': 'application/json' } : {}),
       },
       body: body === undefined ? undefined : multipart ? body : JSON.stringify(body),
-      signal: AbortSignal.timeout(timeout),
+      signal: controller.signal,
     });
   } catch {
     throw new ServiceError(504, 'upstream_timeout', 'Ryšys su vertėju užtruko. Pabandykite dar kartą – jūsų tekstas ir nuotrauka išliko.');
-  }
+  } finally { clearTimeout(timer); }
   if (!response.ok) {
     // Consume the response without reflecting potentially sensitive diagnostics.
     await response.arrayBuffer();

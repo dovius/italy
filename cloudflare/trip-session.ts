@@ -148,7 +148,12 @@ export class TripSession extends DurableObject<Env> {
       for (const [key, value] of entries) {
         if (value.expires > now) continue;
         if (key.startsWith('live:')) await this.closeSession((value as LiveSession).id);
-        else await this.ctx.storage.delete(key);
+        else {
+          // An in-flight answer may have refreshed this entry while a hangup
+          // awaited OpenAI. Never delete a newer result using the old snapshot.
+          const current = await this.ctx.storage.get<{ expires: number }>(key);
+          if (current && current.expires <= now) await this.ctx.storage.delete(key);
+        }
       }
       const remaining = await this.ctx.storage.list<{ expires: number }>();
       if (remaining.size) await this.ctx.storage.setAlarm(Math.max(Date.now() + 1000, Math.min(...[...remaining.values()].map(value => value.expires))));
