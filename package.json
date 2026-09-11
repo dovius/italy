@@ -20,7 +20,8 @@
     "cf:deploy": "npm run build:cloudflare && wrangler deploy --secrets-file .dev.vars",
     "cf:tail": "wrangler tail",
     "cf:delete": "wrangler delete",
-    "test:cloudflare": "tsx --test tests/cloudflare/*.test.ts"
+    "test:cloudflare": "tsx --test --test-timeout=20000 tests/cloudflare/*.test.ts",
+    "test:e2e:cloudflare": "npm run build:cloudflare && E2E_TARGET=cloudflare playwright test"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "5.3.0",

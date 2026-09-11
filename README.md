@@ -1,6 +1,8 @@
 # Kelionės vertėjas
 
-A mobile-first Lithuanian travel interpreter for Italy. Three actions, no accounts, and no settings to navigate. React + TypeScript, a small Express server, and an installable PWA.
+A mobile-first Lithuanian travel interpreter for Italy. Three actions, no accounts, and no settings to navigate. React + TypeScript, an installable PWA, and a small backend for either Cloudflare Workers Free or Node/Express.
+
+**Deploy to Cloudflare Free:** see the [Lithuanian deployment instructions](CLOUDFLARE.md). Run `npm run cf:prepare`, `npx wrangler login`, then `npm run cf:deploy`. Hosting and the API share one HTTPS address; OpenAI usage is billed separately.
 
 ## Run
 
@@ -31,12 +33,12 @@ iPhone / Android browser
   React UI ─── IndexedDB: latest photo, text, captions and drafts
      │        Service worker: app, fonts and icons only
      │
-     ├─ HTTPS /api/live/session ── Express ── OpenAI Live session creation
+     ├─ HTTPS /api/live/session ── Backend ── OpenAI Live session creation
      │    └─ WebRTC directly to GPT-Live-1: microphone, speech, captions
      │
-     ├─ HTTPS /api/chat ───────── Express ── Responses (text + vision + search)
-     ├─ HTTPS /api/transcribe ─── Express ── Lithuanian speech transcription
-     └─ HTTPS /api/speech ─────── Express ── Spoken playback / repeat
+     ├─ HTTPS /api/chat ───────── Backend ── Responses (text + vision + search)
+     ├─ HTTPS /api/transcribe ─── Backend ── Lithuanian speech transcription
+     └─ HTTPS /api/speech ─────── Backend ── Spoken playback / repeat
 ```
 
 1. **Kalbėtis** immediately requests microphone access and starts `gpt-live-1`. Lithuanian is interpreted into Italian; Italian, English and Spanish into Lithuanian. The prompt preserves meaning and converts “ask whether we can park here” into a direct Italian question. The Live model handles turn-taking and interruptions. Original and translated captions are displayed independently. Repeat uses speech synthesis; Show displays the latest translation in a full-screen accessible dialog. During playback or Show, microphone input is paused to prevent translating the app’s own audio. End stops microphone capture immediately and drains the session close event.
@@ -47,7 +49,9 @@ Default models are `gpt-live-1`, `gpt-5.6-luna` for text and images, `gpt-4o-min
 
 ## Deploy for the trip
 
-Deploy this Node server on an HTTPS host. Set `OPENAI_API_KEY` and `APP_ORIGIN=https://your-domain.example`. If the host has one trusted reverse proxy, set `TRUST_PROXY=1`. Bind using the host's `PORT` variable. A static-only host cannot run the API.
+For **Cloudflare Workers Free**, follow [CLOUDFLARE.md](CLOUDFLARE.md). `wrangler.jsonc` deploys the frontend and native Fetch API together, with SQLite Durable Objects for temporary browser sessions. API secrets are uploaded from the ignored `.dev.vars` file. No separate domain or `APP_ORIGIN` configuration is needed. The React interface and shared OpenAI payloads are the same on both hosting targets.
+
+Alternatively, deploy the Node server on an HTTPS host. Set `OPENAI_API_KEY` and `APP_ORIGIN=https://your-domain.example`. If the host has one trusted reverse proxy, set `TRUST_PROXY=1`. Bind using the host's `PORT` variable. A static-only host cannot run the API.
 
 HTTPS is required for a phone's microphone, PWA installation and service workers. Plain HTTP on a LAN IP will not enable those features. `localhost` is the browser's local development exception.
 
@@ -59,7 +63,7 @@ openssl rand -hex 24
 
 Share `https://your-domain.example/join/YOUR_TOKEN` with the travelers. Opening it sets a secure, HttpOnly, 14-day access cookie and redirects to the clean home URL. They can then install the app and use it normally. `/join/` is deliberately excluded from the offline navigation cache. Anyone holding the invitation can use the service, so share it only with the travel group. Without this optional token, the API is accessible to anyone who can reach the site. Keep the OpenAI project funded, configure spend alerts, and stop the server after the trip.
 
-The backend verifies the request origin, validates payloads, limits requests, scopes live session ownership to an anonymous browser cookie, and deduplicates chat retries for ten minutes. Only one live session per browser is retained; a server timer ends sessions after 30 minutes. Context and limits are kept in process memory, appropriate for a single small server during one trip. Multiple server replicas would need shared ownership, limits and idempotency storage.
+The backend verifies the request origin, validates payloads, limits requests, scopes live session ownership to an anonymous browser cookie, and deduplicates chat retries for ten minutes. Opening a replacement live session closes the previous session; abandoned sessions are ended after 30 minutes. Node uses process memory and timers, appropriate for a single small server. The Cloudflare adapter uses per-browser SQLite Durable Objects and alarms, so ownership, limits and completed retries survive process eviction. Only one Node replica should be used without shared storage; Cloudflare handles its own object routing.
 
 ### Docker
 
@@ -78,7 +82,7 @@ Put the container behind the host's HTTPS proxy. Set `APP_ORIGIN` to the public 
 - Voice reconnects with bounded backoff and seeds a replacement session from saved captions. Old connection events are ignored. The user may need to repeat an utterance that was lost during an outage.
 - Failed questions remain visible. Transient network retries reuse the same request ID; the server deduplicates in-flight and completed requests. A recoverable offline question retries when connectivity returns. Do not claim exactly-once processing across a server restart or an ambiguous upstream timeout.
 - Text and the last compressed photo live in IndexedDB on the device. Replacing a photo starts a new image conversation. Help includes a clear-data action. Private browsing or storage denial is reported; the app then continues in memory.
-- The server requests `store: false` for Responses and Live. It does not persist or log photos, transcripts, recordings, prompts, API keys or raw upstream errors. OpenAI's own data retention policies still apply. Audio input, photos and questions are sent to OpenAI for processing; this is explained in the app.
+- The server requests `store: false` for Responses and Live. It does not persist or log photos, live transcripts, recordings, prompts, API keys or raw upstream errors. Reply copies are cached for approximately ten minutes for network retries: in memory on Node, in temporary durable storage on Cloudflare. The Cloudflare adapter also retains short-lived session IDs, request fingerprints and rate counters; alarms clean them up. OpenAI's own data retention policies still apply. Audio input, photos and questions are sent to OpenAI for processing; this is explained in the app.
 - Replay audio is cached in memory for the last ten texts. If offline, a cached clip can replay; otherwise the app uses an available device voice or explains that the sound needs a connection. Voice quality and device voice availability vary.
 - A screen wake lock is requested during live conversations where supported. Leaving the conversation stops capture; switching away from the page ends the call to avoid unexpected background microphone use.
 
@@ -90,6 +94,10 @@ npm test
 npm run build
 npx playwright install chromium webkit
 npm run test:e2e
+# Cloudflare runtime and the same browser flows:
+npm run cf:check
+npm run test:cloudflare
+npm run test:e2e:cloudflare
 ```
 
 The automated API tests use an injected provider, and browser flow tests explicitly mock AI responses. They test origin rejection, anonymous ownership, invitation access, idempotency, image follow-ups, incomplete answers, mobile dictation formats, and late/overlapping captions. Browser projects cover desktop Chromium, Android-sized Chromium, and iPhone-sized WebKit. The production PWA is exercised offline. WebKit emulation is not a replacement for testing camera permissions, audio routing and interruption quality on physical phones.
