@@ -15,7 +15,7 @@ test('production shell and local draft open without a network connection', async
   const origin = `http://127.0.0.1:${(server.address() as { port: number }).port}`;
   try {
   await page.goto(origin);
-  await expect(page.getByRole('heading', { name: 'Kaip galime padėti?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ką norite padaryti?' })).toBeVisible();
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.getByRole('button', { name: /Paklausti/ }).click();
   await page.getByLabel('Jūsų klausimas').fill('Mano išsaugotas klausimas');

@@ -1,0 +1,60 @@
+[
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844
+    },
+    "documentHeight": 1257,
+    "cards": [
+      {
+        "text": "Kalbėtis",
+        "top": 423.5625,
+        "bottom": 591.15625,
+        "height": 167.59375
+      },
+      {
+        "text": "Fotografuoti",
+        "top": 605.15625,
+        "bottom": 772.75,
+        "height": 167.59375
+      },
+      {
+        "text": "Paklausti",
+        "top": 786.75,
+        "bottom": 954.34375,
+        "height": 167.59375
+      }
+    ]
+  },
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080
+    },
+    "documentHeight": 1219,
+    "cards": [
+      {
+        "text": "Kalbėtis",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "height": 318
+      },
+      {
+        "text": "Fotografuoti",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "height": 318
+      },
+      {
+        "text": "Paklausti",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "height": 318
+      }
+    ]
+  }
+]

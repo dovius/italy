@@ -15,7 +15,7 @@ async function layout(page: Page) { expect(await page.evaluate(() => document.do
 
 test('home has three generous actions, clear focus, no overflow, and accessible colors', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Kaip galime padėti?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ką norite padaryti?' })).toBeVisible();
   await layout(page);
   const cards = page.locator('.action-card');
   await expect(cards).toHaveCount(3);
@@ -90,11 +90,11 @@ test('offline question remains visible and automatically continues when connecti
 test('microphone denial has an actionable Lithuanian error and a working exit', async ({ page }) => {
   await page.addInitScript(() => { navigator.mediaDevices.getUserMedia = async () => { throw new DOMException('Denied', 'NotAllowedError'); }; });
   await page.goto('/');
-  await page.getByRole('button', { name: /Kalbėtis Gyvas/ }).click();
+  await page.getByRole('button', { name: 'Kalbėtis', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('leiskite naudoti mikrofoną');
   await expect(page.getByRole('button', { name: 'Pradėti pokalbį', exact: true })).toBeEnabled();
   await page.getByRole('button', { name: 'Į pradžią', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Kaip galime padėti?' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Ką norite padaryti?' })).toBeVisible();
 });
 test('missing provider setup is friendly and does not delete the question', async ({ page }) => {
   await page.route('**/api/chat', (route) => route.fulfill({ status: 503, json: { code: 'not_configured', error: 'Vertėjas dar neparuoštas. Paprašykite kelionės organizatoriaus jį įjungti.' } }));

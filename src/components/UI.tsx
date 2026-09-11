@@ -65,5 +65,13 @@ export function Captions({ rows }: { rows: TranscriptRow[] }) {
   const follow = useRef(true);
   const [scrolled, setScrolled] = useState(false);
   useLayoutEffect(() => { if (follow.current && ref.current) ref.current.scrollTop = ref.current.scrollHeight; }, [rows]);
-  return <div className="caption-wrap"><div className="captions" ref={ref} role="log" aria-label="Išgirstas tekstas ir vertimai" aria-live="off" onScroll={() => { const el = ref.current!; follow.current = el.scrollHeight - el.scrollTop - el.clientHeight < 70; setScrolled(!follow.current); }}>{rows.map((row) => <article className={`caption ${row.role}`} key={row.id}><span className="caption-label">{row.role === 'user' ? 'Išgirsta' : 'Vertimas'}</span><p>{row.text}</p></article>)}</div>{scrolled && <button className="latest-button" onClick={() => { ref.current?.scrollTo({ top: ref.current.scrollHeight, behavior: 'smooth' }); follow.current = true; setScrolled(false); }}><ArrowDown size={19} /> Naujausias vertimas</button>}</div>;
+  useLayoutEffect(() => {
+    const element = ref.current!;
+    // Safari/Chrome bars can resize the caption area without adding a transcript row.
+    // Follow the newest translation only while the reader has not scrolled into history.
+    const observer = new ResizeObserver(() => { if (follow.current) element.scrollTop = element.scrollHeight; });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return <div className="caption-wrap"><div className="captions" ref={ref} tabIndex={0} role="log" aria-label="Išgirstas tekstas ir vertimai" aria-live="off" onScroll={() => { const el = ref.current!; follow.current = el.scrollHeight - el.scrollTop - el.clientHeight < 70; setScrolled(!follow.current); }}>{rows.map((row) => <article className={`caption ${row.role}`} key={row.id}><span className="caption-label">{row.role === 'user' ? 'Išgirsta' : 'Vertimas'}</span><p>{row.text}</p></article>)}</div>{scrolled && <button className="latest-button" onClick={() => { ref.current?.scrollTo({ top: ref.current.scrollHeight, behavior: 'smooth' }); follow.current = true; setScrolled(false); }}><ArrowDown size={19} /> Naujausias vertimas</button>}</div>;
 }

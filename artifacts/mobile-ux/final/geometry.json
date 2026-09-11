@@ -1,0 +1,2558 @@
+[
+  {
+    "name": "home-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 186,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 226,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 286,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 286,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 33,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 33,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 201,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 201,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "help-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 186,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 226,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 286,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 286,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 33,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 33,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 201,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 201,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "live-ready-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 800
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 478.375,
+        "bottom": 535.375,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-transcript-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 1008
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 185,
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 733,
+        "bottom": 790,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "home-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 375,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 339,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 193.5,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 241,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 301,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 301,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 33,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 133.5,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 33,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 133.5,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 208.5,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 133.5,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 208.5,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 133.5,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "help-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 375,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 339,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 193.5,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 241,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 301,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 301,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 33,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 133.5,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 33,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 133.5,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 208.5,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 133.5,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 208.5,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 133.5,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "live-ready-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 375,
+      "height": 812
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 478.375,
+        "bottom": 535.375,
+        "width": 339,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-transcript-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 375,
+      "height": 1008
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 668.6875,
+        "bottom": 732.28125,
+        "width": 164.5,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 192.5,
+        "top": 668.6875,
+        "bottom": 732.28125,
+        "width": 164.5,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 742.28125,
+        "bottom": 799.28125,
+        "width": 339,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "home-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 844
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 201,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 256,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 316,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 316,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 218,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 218,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "help-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 844
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 201,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 256,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 316,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 316,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 218,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 218,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "live-ready-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 844
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 478.375,
+        "bottom": 535.375,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-transcript-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 1008
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 668.6875,
+        "bottom": 732.28125,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 200,
+        "top": 668.6875,
+        "bottom": 732.28125,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 742.28125,
+        "bottom": 799.28125,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-resized-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 838
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 499,
+        "bottom": 562.59375,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 200,
+        "top": 499,
+        "bottom": 562.59375,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 572.59375,
+        "bottom": 629.59375,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-fullscreen-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 1020
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 680.6875,
+        "bottom": 744.28125,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 200,
+        "top": 680.6875,
+        "bottom": 744.28125,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 754.28125,
+        "bottom": 811.28125,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-reconnecting-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 982
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 643.1875,
+        "bottom": 706.78125,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 200,
+        "top": 643.1875,
+        "bottom": 706.78125,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 716.78125,
+        "bottom": 773.78125,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "photo-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 879
+    },
+    "actions": [],
+    "liveControls": [],
+    "text": []
+  },
+  {
+    "name": "assistant-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 933
+    },
+    "actions": [],
+    "liveControls": [],
+    "text": []
+  },
+  {
+    "name": "home-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 221,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 296,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 356,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 356,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 157,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 238,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 238,
+        "top": 517.734375,
+        "bottom": 540.921875,
+        "width": 157,
+        "height": 23.1875,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "help-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 221,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 296,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 356,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 356,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 157,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 238,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 238,
+        "top": 517.734375,
+        "bottom": 540.921875,
+        "width": 157,
+        "height": 23.1875,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "live-ready-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 451.1875,
+        "bottom": 508.1875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-transcript-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 1002
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 668.6875,
+        "bottom": 726.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 220,
+        "top": 668.6875,
+        "bottom": 726.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 736.6875,
+        "bottom": 793.6875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "home-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 768,
+      "height": 1109
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 30,
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 271,
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 512,
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 51,
+        "top": 604.15625,
+        "bottom": 636.65625,
+        "width": 184,
+        "height": 32.5,
+        "fontSize": "26px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 51,
+        "top": 640.65625,
+        "bottom": 688.65625,
+        "width": 184,
+        "height": 48,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 51,
+        "top": 702.65625,
+        "bottom": 749.15625,
+        "width": 184,
+        "height": 46.5,
+        "fontSize": "15px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 292,
+        "top": 604.15625,
+        "bottom": 669.15625,
+        "width": 184,
+        "height": 65,
+        "fontSize": "26px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 292,
+        "top": 683.15625,
+        "bottom": 729.65625,
+        "width": 184,
+        "height": 46.5,
+        "fontSize": "15px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 533,
+        "top": 604.15625,
+        "bottom": 669.15625,
+        "width": 184,
+        "height": 65,
+        "fontSize": "26px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 533,
+        "top": 683.15625,
+        "bottom": 752.90625,
+        "width": 184,
+        "height": 69.75,
+        "fontSize": "15px"
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1024,
+      "height": 1143
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 52,
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.328125,
+        "height": 325.09375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 365.328125,
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.328125,
+        "height": 325.09375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 678.65625,
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.34375,
+        "height": 325.09375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 79,
+        "top": 649.265625,
+        "bottom": 685.515625,
+        "width": 239.328125,
+        "height": 36.25,
+        "fontSize": "29px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 79,
+        "top": 689.515625,
+        "bottom": 713.515625,
+        "width": 239.328125,
+        "height": 24,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 79,
+        "top": 727.515625,
+        "bottom": 777.109375,
+        "width": 239.328125,
+        "height": 49.59375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 392.328125,
+        "top": 649.265625,
+        "bottom": 721.765625,
+        "width": 239.328125,
+        "height": 72.5,
+        "fontSize": "29px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 392.328125,
+        "top": 735.765625,
+        "bottom": 785.359375,
+        "width": 239.328125,
+        "height": 49.59375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 705.65625,
+        "top": 649.265625,
+        "bottom": 721.765625,
+        "width": 239.34375,
+        "height": 72.5,
+        "fontSize": "29px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 705.65625,
+        "top": 735.765625,
+        "bottom": 785.359375,
+        "width": 239.34375,
+        "height": 49.59375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1440,
+      "height": 1221
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 150,
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.65625,
+        "height": 318
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 536.65625,
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.671875,
+        "height": 318
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 923.328125,
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.65625,
+        "height": 318
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 177,
+        "top": 733.609375,
+        "bottom": 769.859375,
+        "width": 312.65625,
+        "height": 36.25,
+        "fontSize": "29px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 177,
+        "top": 773.859375,
+        "bottom": 797.859375,
+        "width": 312.65625,
+        "height": 24,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 177,
+        "top": 811.859375,
+        "bottom": 861.453125,
+        "width": 312.65625,
+        "height": 49.59375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 563.65625,
+        "top": 733.609375,
+        "bottom": 769.859375,
+        "width": 312.671875,
+        "height": 36.25,
+        "fontSize": "29px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 563.65625,
+        "top": 783.859375,
+        "bottom": 833.453125,
+        "width": 312.671875,
+        "height": 49.59375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 950.328125,
+        "top": 733.609375,
+        "bottom": 769.859375,
+        "width": 312.65625,
+        "height": 36.25,
+        "fontSize": "29px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 950.328125,
+        "top": 783.859375,
+        "bottom": 833.453125,
+        "width": 312.65625,
+        "height": 49.59375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 820
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 201,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 256,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 316,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 316,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 218,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 218,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "help-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 820
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 201,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 256,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 316,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 316,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 218,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 137,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 218,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 137,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "live-ready-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 643
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 377.375,
+        "bottom": 434.375,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-transcript-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 838
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 499,
+        "bottom": 562.59375,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 200,
+        "top": 499,
+        "bottom": 562.59375,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 572.59375,
+        "bottom": 629.59375,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-fullscreen-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 913
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 200,
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 573,
+        "bottom": 630,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-reconnecting-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 876
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 200,
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 573,
+        "bottom": 630,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "photo-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 879
+    },
+    "actions": [],
+    "liveControls": [],
+    "text": []
+  },
+  {
+    "name": "assistant-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 933
+    },
+    "actions": [],
+    "liveControls": [],
+    "text": []
+  },
+  {
+    "name": "home-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 186,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 226,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 286,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 286,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 33,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 33,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 201,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 201,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "help-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 186,
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 226,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 286,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 286,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 33,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 33,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 201,
+        "top": 452.734375,
+        "bottom": 505.234375,
+        "width": 126,
+        "height": 52.5,
+        "fontSize": "21px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 201,
+        "top": 513.234375,
+        "bottom": 559.609375,
+        "width": 126,
+        "height": 46.375,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "live-ready-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 800
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 478.375,
+        "bottom": 535.375,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-transcript-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 1008
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 185,
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 733,
+        "bottom": 790,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "home-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 221,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 296,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 356,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 356,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 157,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 238,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 238,
+        "top": 517.734375,
+        "bottom": 540.921875,
+        "width": 157,
+        "height": 23.1875,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "help-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "x": 18,
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "x": 18,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "x": 221,
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "liveControls": [],
+    "text": [
+      {
+        "text": "Kalbėtis",
+        "x": 97,
+        "top": 161.25,
+        "bottom": 196.25,
+        "width": 296,
+        "height": 35,
+        "fontSize": "28px"
+      },
+      {
+        "text": "Gyvas lietuvių ↔ italų vertimas",
+        "x": 37,
+        "top": 214.75,
+        "bottom": 239.9375,
+        "width": 356,
+        "height": 25.1875,
+        "fontSize": "18px"
+      },
+      {
+        "text": "Kalbėkite lietuviškai.Išversime abiem pusėms.",
+        "x": 37,
+        "top": 247.9375,
+        "bottom": 298.9375,
+        "width": 356,
+        "height": 51,
+        "fontSize": "17px"
+      },
+      {
+        "text": "Išversti nuotrauką",
+        "x": 35,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Meniu, ženklai, bilietaiViskas aiškiai lietuviškai.",
+        "x": 35,
+        "top": 517.734375,
+        "bottom": 564.109375,
+        "width": 157,
+        "height": 46.375,
+        "fontSize": "16px"
+      },
+      {
+        "text": "Paklausti apie Italiją",
+        "x": 238,
+        "top": 454.734375,
+        "bottom": 509.734375,
+        "width": 157,
+        "height": 55,
+        "fontSize": "22px"
+      },
+      {
+        "text": "Kelionės asistentasAtsakymai paprastai, lietuviškai.",
+        "x": 238,
+        "top": 517.734375,
+        "bottom": 540.921875,
+        "width": 157,
+        "height": 23.1875,
+        "fontSize": "16px"
+      }
+    ]
+  },
+  {
+    "name": "live-ready-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 451.1875,
+        "bottom": 508.1875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "text": []
+  },
+  {
+    "name": "live-transcript-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 1002
+    },
+    "actions": [],
+    "liveControls": [
+      {
+        "text": "Pakartoti",
+        "x": 18,
+        "top": 668.6875,
+        "bottom": 726.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Parodyti žmogui",
+        "x": 220,
+        "top": 668.6875,
+        "bottom": 726.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "x": 18,
+        "top": 736.6875,
+        "bottom": 793.6875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "text": []
+  }
+]
