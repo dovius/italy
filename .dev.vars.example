@@ -1,0 +1,4 @@
+# Only server secrets go here. Never prefix them with VITE_.
+OPENAI_API_KEY=
+# Optional invitation, matching the Node server's existing behavior:
+# TRIP_ACCESS_TOKEN=

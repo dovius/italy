@@ -4,40 +4,15 @@ import { rateLimit } from 'express-rate-limit';
 import multer from 'multer';
 import { createHash, randomUUID, timingSafeEqual } from 'node:crypto';
 import { ZodError } from 'zod';
-import { ASSISTANT_PROMPT, INTERPRETER_PROMPT, PHOTO_PROMPT } from './prompts';
 import { openaiRequest, requireKey, ServiceError } from './openai';
 import { chatSchema, hangupSchema, sessionSchema, speechSchema } from './validation';
-import type { ChatResult, Citation } from '../shared/types';
+import type { ChatResult } from '../shared/types';
+import { extractResponse } from './response';
+import { chatPayload, livePayload, speechPayload, transcriptionForm } from './payloads';
+export { extractResponse } from './response';
 
 type OwnerRequest = Request & { visitor?: string };
 type Upstream = typeof openaiRequest;
-type ResponseOutput = {
-  status?: string;
-  output?: { type: string; content?: { type: string; text?: string; refusal?: string; annotations?: { type: string; url?: string; title?: string }[] }[] }[];
-};
-
-export function extractResponse(data: ResponseOutput): ChatResult {
-  let text = '';
-  const sources: Citation[] = [];
-  for (const item of data.output ?? []) {
-    if (item.type !== 'message') continue;
-    for (const part of item.content ?? []) {
-      if (part.type === 'output_text' && part.text) text += part.text;
-      if (part.type === 'refusal' && part.refusal) text += part.refusal;
-      for (const annotation of part.annotations ?? []) {
-        if (annotation.type === 'url_citation' && annotation.url && /^https?:\/\//.test(annotation.url) && !sources.some((s) => s.url === annotation.url)) {
-          sources.push({ url: annotation.url, title: annotation.title || new URL(annotation.url).hostname });
-        }
-      }
-    }
-  }
-  if (!text.trim() || data.status === 'incomplete' || data.status === 'failed') {
-    throw new ServiceError(502, 'incomplete', 'Nepavyko gauti viso atsakymo. Pabandykite dar kartą arba užduokite trumpesnį klausimą.');
-  }
-  // OpenAI citation markers are rendered as accessible source links below the answer.
-  return { text: text.replace(/cite[^]*/g, '').trim(), sources };
-}
-
 export function createApp(upstream: Upstream = openaiRequest) {
   const app = express();
   app.disable('x-powered-by');
@@ -115,18 +90,7 @@ export function createApp(upstream: Upstream = openaiRequest) {
     if (!entry) {
       if (pending.size >= 400) throw new ServiceError(429, 'busy', 'Vertėjas užimtas. Pabandykite po minutės.');
       const promise = (async () => {
-        const context: unknown[] = [];
-        if (input.image) context.push({ role: 'user', content: [{ type: 'input_text', text: 'Ši nuotrauka yra viso tolesnio pokalbio kontekstas.' }, { type: 'input_image', image_url: input.image, detail: 'high' }] });
-        context.push(...input.messages.map((m) => ({ role: m.role, content: m.text })));
-        const result = await upstream('responses', {
-          model: process.env.OPENAI_TEXT_MODEL || 'gpt-5.6-luna',
-          ...(/^(gpt-5|gpt-6)/.test(process.env.OPENAI_TEXT_MODEL || 'gpt-5.6-luna') ? { reasoning: { effort: 'low' } } : {}),
-          instructions: input.mode === 'photo' ? PHOTO_PROMPT : ASSISTANT_PROMPT,
-          input: context,
-          store: false,
-          max_output_tokens: 2200,
-          ...(input.mode === 'assistant' ? { tools: [{ type: 'web_search' }], tool_choice: 'auto' } : {}),
-        });
+        const result = await upstream('responses', chatPayload(input, process.env));
         return extractResponse(await result.json());
       })();
       entry = { fingerprint, promise, expires: Date.now() + 10 * 60_000 };
@@ -149,16 +113,7 @@ export function createApp(upstream: Upstream = openaiRequest) {
     const { sdp, history } = sessionSchema.parse(req.body);
     requireKey();
     for (const [id, value] of sessions) if (value.owner === req.visitor) await hangup(id);
-    const result = await upstream('live/sessions', {
-      session: {
-        model: process.env.OPENAI_LIVE_MODEL || 'gpt-live-1',
-        instructions: INTERPRETER_PROMPT,
-        audio: { output: { voice: 'marin' } },
-        store: false,
-        input: history.map((m) => ({ type: 'message', role: m.role, content: [{ type: m.role === 'assistant' ? 'output_text' : 'input_text', text: m.text }] })),
-      },
-      transport: { type: 'webrtc', sdp },
-    }, 25_000);
+    const result = await upstream('live/sessions', livePayload({ sdp, history }, process.env), 25_000);
     const data = await result.json() as { session?: { id?: string }; transport?: { sdp?: string } };
     if (!data.session?.id || !data.transport?.sdp || !/^[A-Za-z0-9_-]+$/.test(data.session.id)) throw new ServiceError(502, 'invalid_session', 'Nepavyko pradėti pokalbio. Pabandykite dar kartą.');
     const id = data.session.id;
@@ -181,12 +136,7 @@ export function createApp(upstream: Upstream = openaiRequest) {
     if (!file || file.size === 0 || !/^(audio\/(webm|mp4|mpeg|ogg|wav|x-wav)|video\/(webm|mp4))(;.*)?$/.test(file.mimetype)) {
       throw new ServiceError(400, 'audio_format', 'Nepavyko perskaityti įrašo. Pabandykite įrašyti dar kartą arba parašykite klausimą.');
     }
-    const extension = file.mimetype.includes('mp4') ? 'm4a' : file.mimetype.includes('mpeg') ? 'mp3' : file.mimetype.includes('ogg') ? 'ogg' : file.mimetype.includes('wav') ? 'wav' : 'webm';
-    const form = new FormData();
-    form.append('file', new Blob([new Uint8Array(file.buffer)], { type: file.mimetype }), `klausimas.${extension}`);
-    form.append('model', process.env.OPENAI_TRANSCRIBE_MODEL || 'gpt-4o-mini-transcribe');
-    form.append('language', 'lt');
-    form.append('response_format', 'json');
+    const form = transcriptionForm(new Blob([new Uint8Array(file.buffer)], { type: file.mimetype }), process.env);
     const result = await upstream('audio/transcriptions', form);
     const data = await result.json() as { text?: string };
     if (!data.text?.trim()) throw new ServiceError(422, 'empty_audio', 'Neišgirdome klausimo. Kalbėkite arčiau telefono ir pabandykite dar kartą.');
@@ -194,13 +144,7 @@ export function createApp(upstream: Upstream = openaiRequest) {
   });
   app.post('/api/speech', async (req, res) => {
     const { text } = speechSchema.parse(req.body);
-    const result = await upstream('audio/speech', {
-      model: process.env.OPENAI_SPEECH_MODEL || 'gpt-4o-mini-tts',
-      voice: 'marin',
-      input: text,
-      instructions: 'Read this text exactly, in its original language. Speak clearly at an unhurried pace for an older traveler. Do not add words or translate.',
-      response_format: 'mp3',
-    });
+    const result = await upstream('audio/speech', speechPayload(text, process.env));
     res.type('audio/mpeg').send(Buffer.from(await result.arrayBuffer()));
   });
   app.use('/api', (_req, res) => res.status(404).json({ code: 'not_found', error: 'Tokio veiksmo nėra. Grįžkite į pradžią.' }));

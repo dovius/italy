@@ -2,6 +2,10 @@ node_modules
 dist
 dist-server
 .env
+.dev.vars
+.dev.vars.*
+.wrangler
+.cloudflare-build
 .env.*
 .git
 artifacts

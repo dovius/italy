@@ -4,23 +4,32 @@ export class ServiceError extends Error {
   }
 }
 
-export function requireKey() {
-  if (!process.env.OPENAI_API_KEY) {
+const localKey = () => typeof process === 'undefined' ? undefined : process.env.OPENAI_API_KEY;
+
+export function requireKey(key: string | undefined = localKey()) {
+  if (!key) {
     throw new ServiceError(503, 'not_configured', 'Vertėjas dar neparuoštas. Paprašykite kelionės organizatoriaus jį įjungti.');
   }
 }
 
 // Native fetch keeps the backend small and follows the documented Live HTTP contract.
 // No upstream payload, request body or key is logged or forwarded as an error.
-export async function openaiRequest(path: string, body?: unknown, timeout = 60_000): Promise<Response> {
-  requireKey();
+export const openaiRequest = (path: string, body?: unknown, timeout = 60_000): Promise<Response> => requestWithKey(localKey(), path, body, timeout);
+
+// Workers inject secrets through bindings; the Node server continues to use .env.
+export function createOpenAIRequest(key?: string): typeof openaiRequest {
+  return (path, body, timeout = 60_000) => requestWithKey(key, path, body, timeout);
+}
+
+async function requestWithKey(key: string | undefined, path: string, body: unknown, timeout: number): Promise<Response> {
+  requireKey(key);
   const multipart = body instanceof FormData;
   let response: Response;
   try {
     response = await fetch(`https://api.openai.com/v1/${path}`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${key}`,
         ...(!multipart && body !== undefined ? { 'Content-Type': 'application/json' } : {}),
       },
       body: body === undefined ? undefined : multipart ? body : JSON.stringify(body),
