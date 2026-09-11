@@ -20,7 +20,13 @@ export async function request(path: string, body: unknown, signal?: AbortSignal,
     });
     if (!response.ok) {
       const data = await response.json().catch(() => ({}));
-      throw new ApiError(data.error || 'Vertėjas nepasiekiamas. Pabandykite dar kartą po kelių akimirkų.', data.code, response.status);
+      if (typeof data?.error === 'string') throw new ApiError(data.error, typeof data.code === 'string' ? data.code : undefined, response.status);
+      // A static-only deployment can serve the app while rejecting every API
+      // POST with an HTML 404/405. Retrying cannot repair its server routing.
+      if (response.status === 404 || response.status === 405) {
+        throw new ApiError('Vertėjo serveris šiuo adresu neįjungtas. Paprašykite kelionės organizatoriaus patikrinti svetainės adresą.', 'not_configured', response.status);
+      }
+      throw new ApiError('Vertėjas nepasiekiamas. Pabandykite dar kartą po kelių akimirkų.', undefined, response.status);
     }
     return response;
   } catch (error) {

@@ -1,6 +1,21 @@
 import { test, expect } from '@playwright/test';
 import { mockLive } from './fixtures/live';
 
+test('Live explains a missing API when a static host returns HTML 405', async ({ page }) => {
+  await mockLive(page);
+  let attempts = 0;
+  await page.route('**/api/live/session', async route => {
+    attempts++;
+    await route.fulfill({ status: 405, contentType: 'text/html', body: '<h1>Method Not Allowed</h1>' });
+  });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Kalbėtis', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('Vertėjo serveris šiuo adresu neįjungtas');
+  await expect(page.getByRole('button', { name: 'Pradėti pokalbį', exact: true })).toBeEnabled();
+  expect(attempts).toBe(1);
+  expect(await page.evaluate(() => (window as any).captureStreams.every((stream: MediaStream) => stream.getTracks().every(track => track.readyState === 'ended')))).toBe(true);
+});
+
 test('Live handles overlapping captions, fullscreen, reconnect history and immediate microphone cleanup', async ({ page }) => {
   const connections = await mockLive(page);
   await page.goto('/');

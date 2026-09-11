@@ -25,6 +25,8 @@ https://keliones-vertejas.jusu-subdomenas.workers.dev
 
 Atverkite **terminalo parodytą** adresą telefone. Šiam diegimui nereikia nustatyti `APP_ORIGIN`, `PORT`, `HOST` ar `TRUST_PROXY`: API automatiškai tikrina dabartinį svetainės adresą. HTTPS įjungiamas automatiškai.
 
+Šio projekto `wrangler.jsonc` taip pat prijungia **`italiano.vild.lt`** prie `keliones-vertejas` Worker. Diegiant iš kitos paskyros, pakeiskite arba pašalinkite `routes` įrašą.
+
 `.dev.vars` ir `.env` nepatenka į Git, Docker ar viešus svetainės failus. Raktas perskaitomas tik serveryje. Nenaudokite `VITE_` prefikso paslaptims.
 
 ## Atnaujinimas
@@ -36,6 +38,14 @@ npm run cf:deploy
 ```
 
 Jei pakeitėte raktą `.env`, atnaujinkite jį ir `.dev.vars`: paruošimo komanda sąmoningai neperrašo esamų paslapčių. Diegimas naudoja `.dev.vars` reikšmes.
+
+## `italiano.vild.lt` grąžina `405 Method Not Allowed`
+
+Patikrinus paskyrą nustatyta, kad šis domenas buvo prijungtas prie kito Worker – `italy`, kuriame nėra vertimo API susiejimų. Veikiantis serveris įdiegtas kaip `keliones-vertejas`. Vien svetainės failų neužtenka `POST /api/live/session` užklausai aptarnauti.
+
+Konfigūracijoje domenas jau nurodytas teisingam Worker. Paleiskite `npm run cf:deploy`. Jei Wrangler paklaus **“Update them to point to this script instead?”** dėl `italiano.vild.lt`, patvirtinkite `y`: taip domenas perkeliamas iš `italy` į `keliones-vertejas`. Tai yra Wrangler patvirtinimas keičiant kitam Worker priskirtą domeną. [„Cloudflare Custom Domains“](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+
+Po diegimo `https://italiano.vild.lt/api/health` turi grąžinti JSON `{"ok":true,"configured":true}`. `configured` patvirtina rakto buvimą, bet ne jo galiojimą ar kreditų likutį. Jei vietoje JSON matoma svetainė arba `POST` vis dar gauna 405, domenas dar nepasiekia teisingo Worker. Alternatyvus serverio adresas: `https://keliones-vertejas.dovius-vili.workers.dev`.
 
 ## Pasirinktinai: nuoroda tik kelionės grupei
 
