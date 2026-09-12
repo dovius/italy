@@ -67,6 +67,8 @@ Nuorodą užtenka atverti vieną kartą toje naršyklėje: leidimas galioja 14 d
 
 ## Kaip veikia serveris
 
+Nuotraukoms ir klausimams naudojamas `gpt-5.6-sol` su `reasoning.effort: "low"` ir `service_tier: "fast"`. Tai nustatyta bendroje abiejų serverio variantų užklausoje; atskirai įjungti „Fast mode“ „OpenAI“ paskyroje nereikia. [„Fast mode“ dokumentacija](https://developers.openai.com/api/docs/guides/fast-mode).
+
 ```text
 Telefonas ── HTTPS ── „Workers Static Assets“: React + PWA
          └─ /api/* ── Worker ── naršyklės TripSession ── „OpenAI“

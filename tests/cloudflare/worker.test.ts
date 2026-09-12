@@ -73,6 +73,10 @@ before(async () => {
           if (path === 'audio/transcriptions') return WorkerResponse.json({ text: 'Kur yra stotis?' });
           if (path === 'audio/speech') return new WorkerResponse('test-mp3', { headers: { 'Content-Type': 'audio/mpeg' } });
           assert.equal(path, 'responses');
+          const payload = body as { model: string; reasoning: { effort: string }; service_tier: string };
+          assert.equal(payload.model, 'gpt-5.6-sol');
+          assert.equal(payload.reasoning.effort, 'low');
+          assert.equal(payload.service_tier, 'fast');
           await delay(25);
           return WorkerResponse.json({ status: 'completed', output: [{ type: 'message', content: [{ type: 'output_text', text: 'Galite pasakyti: „Il conto, per favore.“' }] }] });
         } },

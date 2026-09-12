@@ -14,9 +14,10 @@ export function chatPayload(input: z.infer<typeof chatSchema>, config: ModelConf
   const context: unknown[] = [];
   if (input.image) context.push({ role: 'user', content: [{ type: 'input_text', text: 'Ši nuotrauka yra viso tolesnio pokalbio kontekstas.' }, { type: 'input_image', image_url: input.image, detail: 'high' }] });
   context.push(...input.messages.map(m => ({ role: m.role, content: m.text })));
-  const model = config.OPENAI_TEXT_MODEL || 'gpt-5.6-luna';
+  const model = config.OPENAI_TEXT_MODEL || 'gpt-5.6-sol';
   return {
     model,
+    service_tier: 'fast',
     ...(/^(gpt-5|gpt-6)/.test(model) ? { reasoning: { effort: 'low' } } : {}),
     instructions: input.mode === 'photo' ? PHOTO_PROMPT : ASSISTANT_PROMPT,
     input: context,

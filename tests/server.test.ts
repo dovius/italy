@@ -16,6 +16,10 @@ const app = createApp(async (path, body) => {
   if (path.endsWith('/hangup')) return new Response(null, { status: 204 });
   if (path === 'audio/transcriptions') return Response.json({ text: 'Kur yra stotis?' });
   if (path === 'audio/speech') return new Response('test-audio', { headers: { 'content-type': 'audio/mpeg' } });
+  const payload = body as { model: string; reasoning: { effort: string }; service_tier: string };
+  assert.equal(payload.model, 'gpt-5.6-sol');
+  assert.equal(payload.reasoning.effort, 'low');
+  assert.equal(payload.service_tier, 'fast');
   return Response.json({ status: 'completed', output: [{ type: 'message', content: [{ type: 'output_text', text: 'Galite pasakyti: „Il conto, per favore.“' }] }] });
 });
 let server: Server;

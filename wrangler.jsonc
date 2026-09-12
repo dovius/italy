@@ -22,7 +22,7 @@
   ],
   "vars": {
     "OPENAI_LIVE_MODEL": "gpt-live-1",
-    "OPENAI_TEXT_MODEL": "gpt-5.6-luna",
+    "OPENAI_TEXT_MODEL": "gpt-5.6-sol",
     "OPENAI_TRANSCRIBE_MODEL": "gpt-4o-mini-transcribe",
     "OPENAI_SPEECH_MODEL": "gpt-4o-mini-tts"
   },
