@@ -51,7 +51,7 @@ for (const engine of [chromium, webkit]) {
       await capture(page, `help-${name}`);
       await page.getByRole('button', { name: 'Supratau', exact: true }).click();
       await page.getByRole('button', { name: 'Kalbėtis', exact: true }).click();
-      await page.getByRole('heading', { name: 'KALBĖKITE', exact: true }).waitFor();
+      await page.getByRole('heading', { name: 'Galite kalbėti', exact: true }).waitFor();
       await capture(page, `live-ready-${name}`);
       await page.evaluate(() => {
         const peer = (window as any).fakePeer;
@@ -70,7 +70,7 @@ for (const engine of [chromium, webkit]) {
         await capture(page, `live-fullscreen-${name}`);
         await page.getByRole('button', { name: 'Grįžti', exact: true }).click();
         await page.evaluate(() => { const peer = (window as any).fakePeer; peer.connectionState = 'failed'; peer.onconnectionstatechange(); });
-        await page.getByRole('heading', { name: 'ATKURIAME RYŠĮ…', exact: true }).waitFor();
+        await page.getByRole('heading', { name: 'Atkuriame ryšį…', exact: true }).waitFor();
         await capture(page, `live-reconnecting-${name}`);
         await page.getByRole('button', { name: 'Į pradžią', exact: true }).click();
         await page.getByRole('button', { name: 'Išversti nuotrauką', exact: true }).click();

@@ -194,10 +194,12 @@ test('disk history survives closing and reopening the server and expires photos 
   const path = join(directory, 'persist.sqlite');
   const config = { STATS_ADMIN_PASSWORD: password, STATS_DB_PATH: path };
   const first = createNodeStats(config)!;
+  first.service.setOrigin('https://trip.example');
   const requestId = randomUUID();
   await first.service.record({ action: 'chat', visitor: await hash(visitor), requestId, conversationId: requestId, mode: 'photo', text: 'Persist me', image: 'data:image/png;base64,YQ==' });
   await first.close();
   const second = createNodeStats(config)!;
+  assert.equal(second.service.config.APP_ORIGIN, 'https://trip.example');
   const id = `${await hash(visitor)}-${requestId}`;
   const event = second.service.store.event(id)!;
   assert.equal(event.text, 'Persist me');
@@ -215,4 +217,27 @@ test('repeated wrong admin passwords are rate limited independently of traveler 
   for (let i = 0; i < 12; i++) await post('/api/stats/login', { password: 'wrong' });
   assert.equal((await post('/api/stats/login', { password: 'wrong' })).status, 429);
   assert.equal((await post('/api/chat', question())).status, 200);
+});
+
+test('notification excerpts retain the answer to a long question and the latest live exchange', async () => {
+  const sent: { message: string }[] = [];
+  const local = createNodeStats({ STATS_ADMIN_PASSWORD: password, STATS_DB_PATH: ':memory:', NTFY_TOPIC_URL: 'https://ntfy.test/trip' }, async (_url, init) => { sent.push(JSON.parse(String(init?.body))); return new Response(null, { status: 200 }); })!;
+  const id = await hash(visitor);
+  const requestId = randomUUID();
+  try {
+    await local.service.record({ action: 'chat', visitor: id, requestId, conversationId: requestId, mode: 'assistant', text: 'Klausimas 🧳 '.repeat(600) });
+    await local.service.record({ action: 'answer', visitor: id, requestId, text: 'Risposta italiana.', sources: [] });
+    await local.service.flushNotifications();
+    assert.match(sent[0].message, /Risposta italiana/);
+    await local.service.record({ action: 'live', visitor: id, sessionId: 'live_long' });
+    await local.service.record({ action: 'fragments', visitor: id, sessionId: 'live_long', fragments: [
+      { id: 'input', session: 'live_long', role: 'user', text: 'Ankstesnė frazė 🧳 '.repeat(400) + 'Paskutinis klausimas?', start: 0, end: 1000 },
+      { id: 'output', session: 'live_long', role: 'assistant', text: 'Una frase precedente. '.repeat(400) + 'Ultima risposta italiana.', start: 0, end: 1100 },
+    ] });
+    await local.service.record({ action: 'end', visitor: id, sessionId: 'live_long' });
+    await local.service.flushNotifications();
+    assert.match(sent[1].message, /Paskutinis klausimas/);
+    assert.match(sent[1].message, /Ultima risposta italiana/);
+    assert.ok(sent.every(item => !item.message.includes('�') && new TextEncoder().encode(item.message).length < 3100));
+  } finally { await local.close(); }
 });

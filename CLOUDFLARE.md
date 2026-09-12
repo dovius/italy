@@ -4,7 +4,7 @@ Projektas paruoštas **„Cloudflare Workers“ su statiniais failais**. Vienas 
 
 ## Pirmasis diegimas
 
-Reikia Node.js 22.12+ ir „Cloudflare“ paskyros su nemokamu „Workers“ planu. Projekto aplanke:
+Reikia Node.js 22.13+ ir „Cloudflare“ paskyros su nemokamu „Workers“ planu. Projekto aplanke:
 
 ```sh
 npm ci
@@ -57,6 +57,16 @@ https://JUSU-ADRESAS.workers.dev/join/JUSU_TOKEN
 
 Nuorodą užtenka atverti vieną kartą toje naršyklėje: leidimas galioja 14 dienų, prisijungimo ekrano nėra. Be šio nustatymo API gali naudotis visi, žinantys svetainės adresą. Nuorodos turėtojas naudoja jūsų „OpenAI“ kreditus. Diegimo komandai pateikiamos paslaptys atnaujinamos, o nepateiktos senos paslaptys išlieka; norėdami vėliau atsisakyti ribojimo, vykdykite `npx wrangler secret delete TRIP_ACCESS_TOKEN`.
 
+## Administravimo puslapis ir „ntfy“
+
+Adresas **`https://italiano.vild.lt/stats`** atveriamas tiesiogiai; pagrindiniame appse nuorodos į jį nėra. `.dev.vars` nustatykite `STATS_ADMIN_PASSWORD` (atskirą administratoriaus slaptažodį) ir `NTFY_TOPIC_URL=https://ntfy.sh/dode-italiano`. Jei „ntfy“ tema reikalauja autentifikacijos, pridėkite `NTFY_TOKEN`. Esamų API raktų nekeiskite. Pritaikykite pakeitimus įprasta `npm run cf:deploy` komanda: ji taip pat sukuria `ActivityLog` saugyklą pagal naują `v2` migraciją.
+
+Prisijungę matysite nuotraukas, klausimus, atsakymus, diktuotą tekstą, prašymus skaityti balsu ir balso pokalbių tekstus. Galima ieškoti, filtruoti ir priskirti vardą naršyklės žymėjimui. Telefone pasirinkite keliautoją ir spauskite „Keisti vardą“. Žymėjimas priklauso naršyklei, todėl kitas telefonas ar išvalyti slapukai reiškia naują keliautoją. Automatinis atnaujinimas vyksta kas 15 sekundžių.
+
+Istorija pradedama rinkti įjungus šią funkciją; ankstesnės telefone saugotos istorijos serveris neturi. Pagal nutylėjimą įrašai saugomi 30 dienų nuo paskutinio atnaujinimo; `STATS_RETENTION_DAYS` galima nustatyti nuo 1 iki 365. Nuotraukas ir pilną istoriją gali skaityti tik prisijungęs administratorius. `/stats` neprisijungus prie interneto neatveriamas, istorija nepatenka į PWA podėlį. Ištrynimas telefone nepašalina administratoriaus kopijos.
+
+„ntfy“ pranešime bus vardas arba naršyklės žymėjimas, veiksmas, teksto ištrauka ir nuoroda į pilną įrašą. Nuotraukai atverti reikia administratoriaus prisijungimo. Nepavykę pranešimai lieka eilėje; „Durable Object“ žadintuvas bando iki penkių kartų, o dashboarde galima pakartoti siuntimą. Balso tekstai į pranešimus sujungiami maždaug kas 15 sekundžių. Garso įrašai nesaugomi; netikėtai uždarius naršyklę paskutinė teksto dalis gali nespėti pasiekti serverio.
+
 ## Kas įeina į nemokamą planą
 
 - Statinių svetainės failų užklausos nemokamos ir neribojamos. [„Static Assets“ kainodara](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/).
@@ -75,9 +85,9 @@ Telefonas ── HTTPS ── „Workers Static Assets“: React + PWA
          └─ WebRTC ────────────────────────────────── GPT-Live-1
 ```
 
-Statiniams failams Worker nepaleidžiamas. `/api/*` ir `/join/*` visada pasiekia serverį. Kiekvienai anoniminei naršyklei priskiriamas atskiras `TripSession` objektas: išlieka užklausų limitai, balso sesijos savininkas ir pakartotinių klausimų atsakymai, net jei „Cloudflare“ perkrauna procesą. Didesnės nuotraukų užklausos apdorojamos šiame objekte, ne pradiniame Worker su trumpu Free CPU limitu. Balso srautas keliauja tiesiai tarp telefono ir „OpenAI“.
+Statiniams failams Worker nepaleidžiamas. `/api/*`, `/join/*` ir `/stats` visada pasiekia serverį. Kiekvienai anoniminei naršyklei priskiriamas atskiras `TripSession` objektas: išlieka užklausų limitai, balso sesijos savininkas ir pakartotinių klausimų atsakymai, net jei „Cloudflare“ perkrauna procesą. Didesnės nuotraukų užklausos apdorojamos šiame objekte, ne pradiniame Worker su trumpu Free CPU limitu. Balso srautas keliauja tiesiai tarp telefono ir „OpenAI“, o rodomi pokalbio tekstai atskirai siunčiami istorijai.
 
-Visas kelionės kontekstas ir paskutinė nuotrauka saugomi telefone. „Cloudflare“ trumpai laiko atsakymo kopiją (apie 10 minučių), užklausos maišą, limitų skaitiklį ir aktyvios balso sesijos ID. Nuotraukos, garso įrašai, užklausų tekstai ir pilna istorija saugykloje neįrašomi. „Durable Object“ žadintuvai išvalo pasibaigusius įrašus ir po 30 minučių uždaro likusią balso sesiją; nesėkmingą uždarymą pakartoja. AI tiekėjo duomenų saugojimo taisyklės taikomos atskirai.
+Kelionės kontekstas ir paskutinė nuotrauka saugomi telefone. `TripSession` trumpai laiko atsakymo kopiją (apie 10 minučių), užklausos maišą, limitų skaitiklį ir aktyvios balso sesijos ID. Teksto įkėlimo teisė galioja 40 minučių, kad būtų priimtos paskutinės pokalbio dalys. Kai įjungtas `STATS_ADMIN_PASSWORD`, atskiras `ActivityLog` išsaugo nuotraukas, klausimus, atsakymus ir balso tekstus bei pranešimų eilę. Garso įrašai nesaugomi. „Durable Object“ žadintuvai išvalo pasibaigusius įrašus ir po 30 minučių uždaro likusią balso sesiją; nesėkmingą uždarymą pakartoja. AI tiekėjo duomenų saugojimo taisyklės taikomos atskirai.
 
 ## Patikrinimas kompiuteryje
 

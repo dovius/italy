@@ -1,0 +1,2499 @@
+[
+  {
+    "name": "home-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 453.265625,
+        "bottom": 510.265625,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 211,
+        "bottom": 233.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 239.390625,
+        "bottom": 271.890625,
+        "width": 224,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 224,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 290,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 224,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 290,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 733,
+        "bottom": 790,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 224,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 290,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 608.640625,
+        "bottom": 641.1875,
+        "width": 286,
+        "height": 32.546875
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "documentWidth": 375,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 339,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "documentWidth": 375,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 453.265625,
+        "bottom": 510.265625,
+        "width": 339,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 211,
+        "bottom": 233.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 239.390625,
+        "bottom": 271.890625,
+        "width": 239,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "documentWidth": 375,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 339,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 239,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 305,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "documentWidth": 375,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 339,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 239,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 305,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "documentWidth": 375,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 671.40625,
+        "bottom": 735,
+        "width": 164.5,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 671.40625,
+        "bottom": 735,
+        "width": 164.5,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 745,
+        "bottom": 802,
+        "width": 339,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 239,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 305,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 620.640625,
+        "bottom": 653.1875,
+        "width": 301,
+        "height": 32.546875
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 453.265625,
+        "bottom": 510.265625,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 211,
+        "bottom": 233.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 239.390625,
+        "bottom": 271.890625,
+        "width": 254,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 703.40625,
+        "bottom": 767,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 703.40625,
+        "bottom": 767,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 777,
+        "bottom": 834,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 627.640625,
+        "bottom": 660.1875,
+        "width": 316,
+        "height": 32.546875
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 426.078125,
+        "bottom": 483.078125,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 211,
+        "bottom": 233.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 239.390625,
+        "bottom": 271.890625,
+        "width": 294,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 468.1875,
+        "bottom": 525.1875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 294,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 323,
+        "bottom": 377,
+        "width": 360,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 468.1875,
+        "bottom": 525.1875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 294,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 323,
+        "bottom": 377,
+        "width": 360,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 685.6875,
+        "bottom": 743.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 685.6875,
+        "bottom": 743.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 753.6875,
+        "bottom": 810.6875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 294,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 323,
+        "bottom": 377,
+        "width": 360,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 602.140625,
+        "bottom": 634.6875,
+        "width": 356,
+        "height": 32.546875
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 391.265625,
+        "bottom": 448.265625,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 149,
+        "bottom": 171.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 177.390625,
+        "bottom": 209.890625,
+        "width": 254,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 395.875,
+        "bottom": 452.875,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 149.796875,
+        "bottom": 172.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 179,
+        "bottom": 211.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 223.5,
+        "bottom": 277.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 395.875,
+        "bottom": 452.875,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 149.796875,
+        "bottom": 172.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 179,
+        "bottom": 211.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 223.5,
+        "bottom": 277.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 573,
+        "bottom": 630,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 149.796875,
+        "bottom": 172.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 179,
+        "bottom": 211.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 223.5,
+        "bottom": 277.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 433.640625,
+        "bottom": 466.1875,
+        "width": 316,
+        "height": 32.546875
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "documentWidth": 768,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "documentWidth": 768,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 688.265625,
+        "bottom": 746.265625,
+        "width": 708,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 473.578125,
+        "bottom": 495.96875,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 501.96875,
+        "bottom": 536.96875,
+        "width": 576,
+        "height": 35
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "documentWidth": 768,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 759.265625,
+        "bottom": 817.265625,
+        "width": 708,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 474.078125,
+        "bottom": 496.46875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 503.28125,
+        "bottom": 538.28125,
+        "width": 576,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 595.078125,
+        "bottom": 651.078125,
+        "width": 658,
+        "height": 56
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "documentWidth": 768,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 759.265625,
+        "bottom": 817.265625,
+        "width": 708,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 474.078125,
+        "bottom": 496.46875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 503.28125,
+        "bottom": 538.28125,
+        "width": 576,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 595.078125,
+        "bottom": 651.078125,
+        "width": 658,
+        "height": 56
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "documentWidth": 768,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 1006.25,
+        "bottom": 1064.25,
+        "width": 347.5,
+        "height": 58
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 1006.25,
+        "bottom": 1064.25,
+        "width": 347.5,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 1088.25,
+        "bottom": 1146.25,
+        "width": 708,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 474.078125,
+        "bottom": 496.46875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 503.28125,
+        "bottom": 538.28125,
+        "width": 576,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 595.078125,
+        "bottom": 651.078125,
+        "width": 658,
+        "height": 56
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 920.15625,
+        "bottom": 954.25,
+        "width": 660,
+        "height": 34.09375
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "documentWidth": 1024,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.328125,
+        "height": 325.09375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.328125,
+        "height": 325.09375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.34375,
+        "height": 325.09375
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "documentWidth": 1024,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 696.953125,
+        "bottom": 754.953125,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 482.265625,
+        "bottom": 504.65625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 510.65625,
+        "bottom": 545.65625,
+        "width": 628,
+        "height": 35
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "documentWidth": 1024,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 767.953125,
+        "bottom": 825.953125,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 482.765625,
+        "bottom": 505.15625,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 511.96875,
+        "bottom": 546.96875,
+        "width": 628,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 603.765625,
+        "bottom": 659.765625,
+        "width": 710,
+        "height": 56
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "documentWidth": 1024,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 767.953125,
+        "bottom": 825.953125,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 482.765625,
+        "bottom": 505.15625,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 511.96875,
+        "bottom": 546.96875,
+        "width": 628,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 603.765625,
+        "bottom": 659.765625,
+        "width": 710,
+        "height": 56
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "documentWidth": 1024,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 1014.9375,
+        "bottom": 1072.9375,
+        "width": 373.5,
+        "height": 58
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 1014.9375,
+        "bottom": 1072.9375,
+        "width": 373.5,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 1096.9375,
+        "bottom": 1154.9375,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 482.765625,
+        "bottom": 505.15625,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 511.96875,
+        "bottom": 546.96875,
+        "width": 628,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 603.765625,
+        "bottom": 659.765625,
+        "width": 710,
+        "height": 56
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 928.84375,
+        "bottom": 962.9375,
+        "width": 712,
+        "height": 34.09375
+      }
+    ]
+  },
+  {
+    "name": "home-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "documentWidth": 1440,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.65625,
+        "height": 318
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.671875,
+        "height": 318
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.65625,
+        "height": 318
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "documentWidth": 1440,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 706.515625,
+        "bottom": 764.515625,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 491.828125,
+        "bottom": 514.21875,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 520.21875,
+        "bottom": 555.21875,
+        "width": 628,
+        "height": 35
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "documentWidth": 1440,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 777.515625,
+        "bottom": 835.515625,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 492.328125,
+        "bottom": 514.71875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 521.53125,
+        "bottom": 556.53125,
+        "width": 628,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 613.328125,
+        "bottom": 669.328125,
+        "width": 710,
+        "height": 56
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "documentWidth": 1440,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 777.515625,
+        "bottom": 835.515625,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 492.328125,
+        "bottom": 514.71875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 521.53125,
+        "bottom": 556.53125,
+        "width": 628,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 613.328125,
+        "bottom": 669.328125,
+        "width": 710,
+        "height": 56
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "documentWidth": 1440,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 1024.5,
+        "bottom": 1082.5,
+        "width": 373.5,
+        "height": 58
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 1024.5,
+        "bottom": 1082.5,
+        "width": 373.5,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 1106.5,
+        "bottom": 1164.5,
+        "width": 760,
+        "height": 58
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 492.328125,
+        "bottom": 514.71875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 521.53125,
+        "bottom": 556.53125,
+        "width": 628,
+        "height": 35
+      },
+      {
+        "text": "Klausomės",
+        "top": 613.328125,
+        "bottom": 669.328125,
+        "width": 710,
+        "height": 56
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 938.40625,
+        "bottom": 972.5,
+        "width": 712,
+        "height": 34.09375
+      }
+    ]
+  },
+  {
+    "name": "home-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 453.265625,
+        "bottom": 510.265625,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 211,
+        "bottom": 233.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 239.390625,
+        "bottom": 271.890625,
+        "width": 224,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 224,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 290,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.875,
+        "bottom": 577.875,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 224,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 290,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "documentWidth": 360,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 659.40625,
+        "bottom": 723,
+        "width": 157,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 733,
+        "bottom": 790,
+        "width": 324,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 224,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 348.5,
+        "bottom": 402.5,
+        "width": 290,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 608.640625,
+        "bottom": 641.1875,
+        "width": 286,
+        "height": 32.546875
+      }
+    ]
+  },
+  {
+    "name": "home-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 426.078125,
+        "bottom": 483.078125,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 211,
+        "bottom": 233.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 239.390625,
+        "bottom": 271.890625,
+        "width": 294,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 468.1875,
+        "bottom": 525.1875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 294,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 323,
+        "bottom": 377,
+        "width": 360,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 468.1875,
+        "bottom": 525.1875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 294,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 323,
+        "bottom": 377,
+        "width": 360,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "documentWidth": 430,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 685.6875,
+        "bottom": 743.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 685.6875,
+        "bottom": 743.6875,
+        "width": 192,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 753.6875,
+        "bottom": 810.6875,
+        "width": 394,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 211.796875,
+        "bottom": 234.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 241,
+        "bottom": 273.5,
+        "width": 294,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 323,
+        "bottom": 377,
+        "width": 360,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 602.140625,
+        "bottom": 634.6875,
+        "width": 356,
+        "height": 32.546875
+      }
+    ]
+  },
+  {
+    "name": "home-webkit-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "feedback": [],
+    "translation": []
+  },
+  {
+    "name": "connecting-webkit-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 391.265625,
+        "bottom": 448.265625,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Ruošiame vertėją",
+        "top": 149,
+        "bottom": 171.390625,
+        "width": 133.171875,
+        "height": 22.390625
+      },
+      {
+        "text": "Jungiamės…",
+        "top": 177.390625,
+        "bottom": 209.890625,
+        "width": 254,
+        "height": 32.5
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "listening-webkit-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 395.875,
+        "bottom": 452.875,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 149.796875,
+        "bottom": 172.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 179,
+        "bottom": 211.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 223.5,
+        "bottom": 277.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "voice-webkit-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Baigti pokalbį",
+        "top": 395.875,
+        "bottom": 452.875,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 149.796875,
+        "bottom": 172.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 179,
+        "bottom": 211.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 223.5,
+        "bottom": 277.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": []
+  },
+  {
+    "name": "transcript-webkit-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "documentWidth": 390,
+    "controls": [
+      {
+        "text": "Pakartoti",
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Parodyti žmogui",
+        "top": 499.40625,
+        "bottom": 563,
+        "width": 172,
+        "height": 63.59375
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 573,
+        "bottom": 630,
+        "width": 354,
+        "height": 57
+      }
+    ],
+    "feedback": [
+      {
+        "text": "Prisijungta",
+        "top": 149.796875,
+        "bottom": 172.1875,
+        "width": 105.6875,
+        "height": 22.390625
+      },
+      {
+        "text": "Galite kalbėti",
+        "top": 179,
+        "bottom": 211.5,
+        "width": 254,
+        "height": 32.5
+      },
+      {
+        "text": "Klausomės",
+        "top": 223.5,
+        "bottom": 277.5,
+        "width": 320,
+        "height": 54
+      }
+    ],
+    "translation": [
+      {
+        "text": "Possiamo parcheggiare qui?",
+        "top": 433.640625,
+        "bottom": 466.1875,
+        "width": 316,
+        "height": 32.546875
+      }
+    ]
+  }
+]

@@ -20,7 +20,7 @@ test('Live handles overlapping captions, fullscreen, reconnect history and immed
   const connections = await mockLive(page);
   await page.goto('/');
   await page.getByRole('button', { name: 'Kalbėtis', exact: true }).click();
-  await expect(page.getByText('KALBĖKITE', { exact: true })).toBeVisible();
+  await expect(page.getByText('Galite kalbėti', { exact: true })).toBeVisible();
   await page.evaluate(() => {
     const peer = (window as any).fakePeer;
     peer.channel.emit({ type: 'session.input_transcript.delta', event_id: 'input_b', delta: ' čia statyti?', start_ms: 400, end_ms: 800 });
@@ -34,7 +34,7 @@ test('Live handles overlapping captions, fullscreen, reconnect history and immed
   await page.getByRole('button', { name: 'Grįžti', exact: true }).click();
   await page.evaluate(() => { const peer = (window as any).fakePeer; peer.connectionState = 'failed'; peer.onconnectionstatechange(); });
   await expect.poll(() => connections.length).toBe(2);
-  await expect(page.getByText('KALBĖKITE', { exact: true })).toBeVisible();
+  await expect(page.getByText('Galite kalbėti', { exact: true })).toBeVisible();
   expect(connections[1].history).toEqual([{ role: 'user', text: 'Ar galime čia statyti?' }, { role: 'assistant', text: 'Possiamo parcheggiare qui?' }]);
   expect(await page.evaluate(() => (window as any).captureStreams.length)).toBe(1);
   expect(await page.evaluate(() => (window as any).captureStreams[0].getAudioTracks()[0].readyState)).toBe('live');
@@ -45,7 +45,7 @@ test('Live handles overlapping captions, fullscreen, reconnect history and immed
   // Starting again while the old close event drains must not close the new peer.
   await page.getByRole('button', { name: 'Tęsti pokalbį', exact: true }).click();
   await expect.poll(() => connections.length).toBe(3);
-  await expect(page.getByText('KALBĖKITE', { exact: true })).toBeVisible();
+  await expect(page.getByText('Galite kalbėti', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Į pradžią', exact: true }).click();
   expect(await page.evaluate(() => (window as any).captureStreams.every((stream: MediaStream) => stream.getTracks().every((track) => track.readyState === 'ended')))).toBe(true);
 });

@@ -47,7 +47,7 @@ for (const engine of [chromium, webkit]) {
     await page.getByRole('button', { name: 'Kalbėtis', exact: true }).click();
     await expect.poll(() => page.evaluate(() => (window as any).fakePeer?.connectionState)).toBe('connected');
     await page.clock.runFor(100);
-    await page.getByRole('heading', { name: 'KALBĖKITE', exact: true }).waitFor();
+    await page.getByRole('heading', { name: 'Galite kalbėti', exact: true }).waitFor();
     await page.evaluate(() => {
       (window as any).fakePeer.channel.emit({ type: 'session.input_transcript.delta', delta: 'Sąskaitą, prašau.', start_ms: 0, end_ms: 1000 });
       (window as any).fakePeer.channel.emit({ type: 'session.output_transcript.delta', delta: 'Il conto, per favore.', start_ms: 300, end_ms: 1400 });

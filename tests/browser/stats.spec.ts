@@ -22,6 +22,8 @@ async function mockStats(page: Page, empty = false) {
   const calls: { path: string; query: URLSearchParams; body?: any }[] = [];
   const items = structuredClone(empty ? [] : events);
   let authenticated = true;
+  let holdNext = false;
+  let release: (() => void) | undefined;
   const menu = await readFile('tests/fixtures/menu.svg', 'utf8');
   await page.route('**/api/stats**', async route => {
     const url = new URL(route.request().url());
@@ -45,9 +47,10 @@ async function mockStats(page: Page, empty = false) {
       counts: { question: filtered.filter(event => event.kind === 'question').length, photo: filtered.filter(event => event.kind === 'photo').length, live: filtered.filter(event => event.kind === 'live').length, dictation: 0, speech: 0 },
       visitors: [...new Set(items.map(event => event.visitorId))].map(id => ({ id, name: items.find(event => event.visitorId === id)!.visitorName, count: items.filter(event => event.visitorId === id).length, lastSeen: timestamp })), retentionDays: 30, ntfyConfigured: true, notificationFailures: 0,
     };
-    await route.fulfill({ json: data, headers });
+    if (holdNext) { holdNext = false; await new Promise<void>(resolve => { release = resolve; }); }
+    await route.fulfill({ json: data, headers }).catch(() => {});
   });
-  return { calls, expire: () => { authenticated = false; } };
+  return { calls, expire: () => { authenticated = false; }, hold: () => { holdNext = true; }, waiting: () => Boolean(release), release: () => { release?.(); } };
 }
 
 test('stats has its own working login and is absent from the main navigation', async ({ page }) => {
@@ -90,7 +93,7 @@ test('dashboard shows photos, answers, identity filters, search, rename, and ful
   await expect(page.getByRole('heading', { name: 'Pasirinkto pokalbio istorija' })).toBeVisible();
   await expect.poll(() => mock.calls.some(call => call.query.get('conversation') === 'photo-conversation')).toBe(true);
   await page.getByRole('button', { name: 'Išvalyti filtrus' }).click();
-  await page.getByLabel('Keliautojas', { exact: true }).selectOption(other);
+  await page.getByRole('combobox', { name: 'Keliautojas', exact: true }).selectOption(other);
   await expect(page.locator('.stats-event')).toHaveCount(1);
   await page.getByRole('button', { name: 'Keisti vardą', exact: true }).click();
   await page.getByLabel('Vardas', { exact: true }).fill('Rūta ir Tomas');
@@ -133,13 +136,29 @@ test('empty history explains when entries appear and login remains accessible', 
   expect(accessibility.violations).toEqual([]);
 });
 
+test('an in-flight history refresh cannot restore private content after logout', async ({ page }) => {
+  const mock = await mockStats(page);
+  await page.goto('/stats');
+  await expect(page.locator('.stats-event')).toHaveCount(3);
+  // Let the ready-state authentication check finish before delaying a refresh.
+  await expect.poll(() => mock.calls.filter(call => call.path === '/api/stats').length).toBeGreaterThanOrEqual(2);
+  mock.hold();
+  await page.getByRole('button', { name: 'Atnaujinti', exact: true }).click();
+  await expect.poll(mock.waiting).toBe(true);
+  await page.getByRole('button', { name: 'Atsijungti', exact: true }).click();
+  await expect(page.getByLabel('Administratoriaus slaptažodis')).toBeVisible();
+  mock.release();
+  await expect(page.locator('.stats-event')).toHaveCount(0);
+  await expect(page.getByLabel('Administratoriaus slaptažodis')).toBeVisible();
+});
+
 test('ending a live call flushes the original and Italian captions with their owning session', async ({ page }) => {
   await mockLive(page);
   const batches: any[] = [];
   await page.route('**/api/live/fragments', async route => { batches.push(route.request().postDataJSON()); await route.fulfill({ status: 204 }); });
   await page.goto('/');
   await page.getByRole('button', { name: 'Kalbėtis', exact: true }).click();
-  await expect(page.getByText('KALBĖKITE', { exact: true })).toBeVisible();
+  await expect(page.getByText('Galite kalbėti', { exact: true })).toBeVisible();
   await page.evaluate(() => {
     const peer = (window as any).fakePeer;
     peer.channel.emit({ type: 'session.input_transcript.delta', event_id: 'user-caption', delta: 'Labas rytas', start_ms: 0, end_ms: 600 });

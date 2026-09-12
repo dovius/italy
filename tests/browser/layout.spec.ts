@@ -53,7 +53,7 @@ test('empty card areas navigate and live controls survive browser height changes
     await page.getByRole('button', { name: 'Į pradžią', exact: true }).click();
   }
   await page.getByRole('button', { name: 'Kalbėtis', exact: true }).locator('.card-icon').click();
-  await expect(page.getByRole('heading', { name: 'KALBĖKITE', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Galite kalbėti', exact: true })).toBeVisible();
   await page.evaluate(() => {
     const peer = (window as any).fakePeer;
     peer.channel.emit({ type: 'session.input_transcript.delta', event_id: 'input_a', delta: 'Ar galime čia statyti?', start_ms: 0, end_ms: 800 });

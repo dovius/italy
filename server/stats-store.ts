@@ -19,6 +19,7 @@ export class StatsStore {
       `CREATE TABLE IF NOT EXISTS stats_images (id TEXT NOT NULL, part INTEGER NOT NULL, data TEXT NOT NULL, PRIMARY KEY(id, part))`,
       `CREATE TABLE IF NOT EXISTS stats_fragments (event_id TEXT NOT NULL, id TEXT NOT NULL, role TEXT NOT NULL, text TEXT NOT NULL, start INTEGER NOT NULL, end INTEGER NOT NULL, PRIMARY KEY(event_id, id))`,
       `CREATE TABLE IF NOT EXISTS stats_limits (id TEXT PRIMARY KEY, count INTEGER NOT NULL, expires INTEGER NOT NULL)`,
+      `CREATE TABLE IF NOT EXISTS stats_metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL)`,
     ]) this.query(sql);
   }
   private parse(row: Record<string, unknown>): Activity {
@@ -31,6 +32,8 @@ export class StatsStore {
       sources: JSON.parse(String(row.sources)), notification: row.notification as Activity['notification'],
     };
   }
+  origin() { return this.query("SELECT value FROM stats_metadata WHERE key = 'origin'")[0]?.value as string | undefined; }
+  rememberOrigin(origin: string) { this.query("INSERT INTO stats_metadata(key, value) VALUES ('origin', ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value", origin); }
   event(id: string, detail = false): Activity | undefined {
     const row = this.query('SELECT e.*, v.name AS visitor_name FROM stats_events e JOIN stats_visitors v ON v.id = e.visitor_id WHERE e.id = ?', id)[0];
     if (!row) return;

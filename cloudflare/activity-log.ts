@@ -18,12 +18,13 @@ export class ActivityLog extends DurableObject<Env> {
       const path = new URL(request.url).pathname;
       let result: Response;
       if (path === '/record' && request.method === 'POST') {
-        this.service.config.APP_ORIGIN ||= request.headers.get('x-trip-origin') || undefined;
+        const origin = request.headers.get('x-trip-origin');
+        if (origin) this.service.setOrigin(origin);
         await this.service.record(await readJSON(request) as StatsCommand);
         result = new Response(null, { status: 204 });
       } else {
         if (!['GET', 'HEAD'].includes(request.method)) request = new Request(request, { body: await readLimited(request, 4096) });
-        this.service.config.APP_ORIGIN ||= new URL(request.url).origin;
+        this.service.setOrigin(new URL(request.url).origin);
         result = await this.service.handle(request, request.headers.get('x-stats-client') || 'unknown');
       }
       await this.schedule();
@@ -32,7 +33,7 @@ export class ActivityLog extends DurableObject<Env> {
     } catch (error) { return errorResponse(error); }
   }
   private async schedule() {
-    const next = this.service.store.nextNotification();
+    const next = this.env.NTFY_TOPIC_URL && this.env.STATS_ADMIN_PASSWORD ? this.service.store.nextNotification() : null;
     const desired = Math.max(Date.now() + 1000, Math.min(next ?? Infinity, Date.now() + 86400_000));
     const current = await this.ctx.storage.getAlarm();
     if (current === null || desired < current) await this.ctx.storage.setAlarm(desired);

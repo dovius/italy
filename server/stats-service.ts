@@ -4,12 +4,34 @@ import { ServiceError } from './openai';
 import { adminCookie, checkOrigin, hash, isAdmin, passwordMatches, statsFilters } from './stats-auth';
 import { StatsStore } from './stats-store';
 
+function excerpt(text: string, budget: number, recent = false) {
+  const bytes = new TextEncoder().encode(text);
+  if (bytes.length <= budget) return text;
+  let start = recent ? bytes.length - budget : 0;
+  let end = recent ? bytes.length : budget;
+  // Keep UTF-8 characters intact at either edge of a bounded notification.
+  if (recent) while ((bytes[start] & 0xc0) === 0x80) start++;
+  else while ((bytes[end] & 0xc0) === 0x80) end--;
+  const clipped = new TextDecoder().decode(bytes.subarray(start, end));
+  return recent ? `…${clipped}` : `${clipped}…`;
+}
+
 export class StatsService {
   private flushing = false;
+  private readonly expectedOrigin?: string;
   readonly retentionDays: number;
-  constructor(readonly store: StatsStore, readonly config: StatsConfig, private fetcher: typeof fetch = fetch) {
+  constructor(readonly store: StatsStore, readonly config: StatsConfig, private fetcher: typeof fetch = (input, init) => fetch(input, init)) {
+    this.expectedOrigin = config.APP_ORIGIN;
+    this.config.APP_ORIGIN ||= store.origin();
     const days = Number(config.STATS_RETENTION_DAYS || 30);
     this.retentionDays = Number.isInteger(days) && days >= 1 && days <= 365 ? days : 30;
+  }
+  setOrigin(origin: string) {
+    const selected = this.expectedOrigin || origin;
+    if (this.config.APP_ORIGIN === selected) return;
+    this.config.APP_ORIGIN = selected;
+    try { this.store.rememberOrigin(selected); }
+    catch { console.error('Nepavyko išsaugoti administravimo puslapio adreso.'); }
   }
   private id(visitor: string, key: string) { return `${visitor}-${key}`; }
   private base(visitor: string, key: string, kind: Activity['kind']): Omit<Activity, 'visitorName'> {
@@ -56,7 +78,7 @@ export class StatsService {
     catch { console.error('Nepavyko išsaugoti administravimo istorijos įrašo.'); }
   }
   async flushNotifications() {
-    if (this.flushing || !this.config.NTFY_TOPIC_URL) return;
+    if (this.flushing || !this.config.NTFY_TOPIC_URL || !this.config.STATS_ADMIN_PASSWORD) return;
     this.flushing = true;
     try {
       for (const item of this.store.notifications()) {
@@ -73,17 +95,16 @@ export class StatsService {
           topicUrl.pathname = topicUrl.pathname.slice(0, topicUrl.pathname.lastIndexOf(topic));
           topicUrl.search = ''; topicUrl.hash = '';
           const title = `${visitorLabel(event.visitorId, event.visitorName)} · ${activityLabels[event.kind]}`;
-          const content = [event.imageName && `Nuotrauka: ${event.imageName}`, event.text && `${event.kind === 'live' ? 'Išgirsta' : 'Žinutė'}: ${event.text}`, event.answer && `${event.kind === 'live' ? 'Vertimas' : 'Atsakymas'}: ${event.answer}`, event.error && `Nepavyko: ${event.error}`].filter(Boolean).join('\n\n');
+          const live = event.kind === 'live';
+          const content = [event.imageName && `Nuotrauka: ${excerpt(event.imageName, 150)}`, event.text && `${live ? 'Išgirsta' : 'Žinutė'}: ${excerpt(event.text, 1000, live)}`, event.answer && `${live ? 'Vertimas' : 'Atsakymas'}: ${excerpt(event.answer, 1400, live)}`, event.error && `Nepavyko: ${excerpt(event.error, 200)}`].filter(Boolean).join('\n\n');
           // JSON keeps Lithuanian titles intact; limit UTF-8 bytes to ntfy's
           // message size. Full text and authenticated photos stay in /stats.
-          let message = content;
-          while (new TextEncoder().encode(message).length > 3000) message = message.slice(0, -100);
-          if (message !== content) message += '…';
+          const message = excerpt(content, 3000);
           const click = this.config.APP_ORIGIN ? `${this.config.APP_ORIGIN.replace(/\/$/, '')}/stats?event=${encodeURIComponent(event.id)}` : undefined;
           const response = await this.fetcher(topicUrl, {
             method: 'POST', headers: { 'Content-Type': 'application/json', ...(this.config.NTFY_TOKEN ? { Authorization: `Bearer ${this.config.NTFY_TOKEN}` } : {}) },
             body: JSON.stringify({ topic, title, message: message || activityLabels[event.kind], click, tags: [event.kind === 'photo' ? 'camera' : event.kind === 'live' ? 'speech_balloon' : 'memo'] }),
-            signal: controller.signal, redirect: 'error',
+            signal: controller.signal, redirect: 'manual',
           });
           success = response.ok;
           await response.body?.cancel();
@@ -98,7 +119,7 @@ export class StatsService {
       const url = new URL(request.url);
       const path = url.pathname.replace(/\/$/, '');
       if (!this.config.STATS_ADMIN_PASSWORD) throw new ServiceError(503, 'stats_not_configured', 'Administravimo puslapis dar neįjungtas. Serveryje nustatykite STATS_ADMIN_PASSWORD.');
-      if (!['GET', 'HEAD'].includes(request.method)) checkOrigin(request, this.config.APP_ORIGIN);
+      if (!['GET', 'HEAD'].includes(request.method)) checkOrigin(request, this.expectedOrigin);
       if (path === '/api/stats/login' && request.method === 'POST') {
         if (!this.store.allowLogin(client)) throw new ServiceError(429, 'login_limit', 'Per daug bandymų. Pabandykite po 10 minučių.');
         const { password } = z.object({ password: z.string().min(1).max(2000) }).parse(await request.json());

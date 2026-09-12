@@ -16,7 +16,7 @@ async function startCall(page: Page, resume = false) {
   await page.getByRole('button', { name: resume ? 'Tęsti pokalbį' : 'Kalbėtis', exact: true }).click();
   await expect.poll(() => page.evaluate(() => (window as any).fakePeer?.connectionState)).toBe('connected');
   await page.clock.runFor(50);
-  await expect(page.getByRole('heading', { name: 'KALBĖKITE', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Galite kalbėti', exact: true })).toBeVisible();
 }
 
 async function say(page: Page, text = 'Sąskaitą, prašau.') {
@@ -71,7 +71,7 @@ test('an explicit continue tap renews the silence deadline without creating anot
   await page.getByRole('dialog').getByRole('button', { name: 'Tęsti pokalbį', exact: true }).click();
   await page.clock.fastForward(99_000);
   await expect(page.getByRole('dialog')).not.toBeVisible();
-  await expect(page.getByRole('heading', { name: 'KALBĖKITE', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Galite kalbėti', exact: true })).toBeVisible();
   expect(connections).toHaveLength(1);
   await page.clock.fastForward(21_000);
   await expectMicOff(page);
@@ -103,7 +103,7 @@ for (const confirm of [false, true]) {
     if (confirm) await dialog.getByRole('button', { name: 'Tęsti pokalbį', exact: true }).click();
     await page.clock.fastForward(20_000);
     if (confirm) {
-      await expect(page.getByRole('heading', { name: 'KALBĖKITE', exact: true })).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Galite kalbėti', exact: true })).toBeVisible();
       expect(connections).toHaveLength(1);
     } else {
       await expect(page.getByRole('heading', { name: 'Mikrofonas išjungtas' })).toBeVisible();

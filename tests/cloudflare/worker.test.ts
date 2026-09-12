@@ -300,21 +300,28 @@ test('activity history, photos, names, and caption ownership survive durable obj
 
 test('ntfy failures persist for alarm retries while successful AI answers remain usable', async () => {
   const visitor = randomUUID();
+  const text = 'Po perkrovimo: kur yra stotis?';
   ntfyFailures = 1;
-  assert.equal((await post('/api/chat', question(), visitor)).status, 200);
+  assert.equal((await post('/api/chat', { ...question(), messages: [{ role: 'user', text }] }, visitor)).status, 200);
   let data = await statsPage(`?visitor=${await hash(visitor)}`);
   for (let i = 0; i < 30 && data.events[0]?.notification !== 'failed'; i++) { await delay(50); data = await statsPage(`?visitor=${await hash(visitor)}`); }
   assert.equal(data.events[0].notification, 'failed');
   assert.equal(data.events[0].status, 'complete');
   await mf.unsafeEvictDurableObject(config.name, 'ActivityLog', { name: 'trip' });
   const store = (await mf.getDurableObjectNamespace('ACTIVITY_LOG')).getByName('trip') as unknown as { makeNotificationsDue(): Promise<void> };
+  const before = notifications.length;
   await store.makeNotificationsDue();
+  // Wait for the alarm's outbound request before any admin HTTP read can
+  // provide the origin again. The deep link must survive a genuinely cold start.
+  for (let i = 0; i < 30 && notifications.length === before; i++) await delay(50);
+  assert.ok(notifications.length > before);
   for (let i = 0; i < 30 && data.events[0].notification !== 'sent'; i++) { await delay(50); data = await statsPage(`?visitor=${await hash(visitor)}`); }
   assert.equal(data.events[0].notification, 'sent');
-  const notification = notifications.find(item => item.click?.endsWith(data.events[0].id))!;
+  const notification = notifications.filter(item => item.message.includes(text)).at(-1)!;
   assert.equal(notification.topic, 'italiano-test');
   assert.match(notification.message, /Il conto/);
   assert.ok(notification.click?.startsWith(`${origin}/stats?event=`));
+  assert.ok(notification.click?.endsWith(data.events[0].id));
 });
 
 test('optional invitation redirects to a clean URL and enables anonymous access', async () => {

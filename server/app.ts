@@ -56,7 +56,7 @@ export function createApp(upstream: Upstream = openaiRequest, options: { stats?:
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     if (!stats) return void res.status(503).json({ code: 'stats_not_configured', error: 'Administravimo puslapis dar neįjungtas. Serveryje nustatykite STATS_ADMIN_PASSWORD.' });
     const origin = process.env.APP_ORIGIN || `${req.protocol}://${req.get('host')}`;
-    stats.service.config.APP_ORIGIN ||= origin;
+    stats.service.setOrigin(origin);
     const headers = new Headers();
     for (const name of ['cookie', 'origin', 'sec-fetch-site', 'content-type']) {
       const value = req.get(name); if (value) headers.set(name, value);
@@ -83,7 +83,7 @@ export function createApp(upstream: Upstream = openaiRequest, options: { stats?:
       res.cookie('trip_visitor', visitor, { httpOnly: true, sameSite: 'strict', secure: req.secure || process.env.APP_ORIGIN?.startsWith('https://'), maxAge: 14 * 86400_000 });
     }
     req.visitor = visitor;
-    if (stats) stats.service.config.APP_ORIGIN ||= process.env.APP_ORIGIN || `${req.protocol}://${req.get('host')}`;
+    stats?.service.setOrigin(process.env.APP_ORIGIN || `${req.protocol}://${req.get('host')}`);
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       const expected = process.env.APP_ORIGIN || `${req.protocol}://${req.get('host')}`;
       if (req.headers.origin !== expected || req.headers['sec-fetch-site'] === 'cross-site') {
