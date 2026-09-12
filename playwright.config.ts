@@ -15,7 +15,8 @@ export default defineConfig({
     { name: 'iphone', use: { ...devices['iPhone 13'], launchOptions: { executablePath: process.env.PLAYWRIGHT_WEBKIT_EXECUTABLE } } },
   ],
   webServer: {
-    command: cloudflare ? 'CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV=false npx wrangler dev --port 4173 --var OPENAI_API_KEY:browser-test-placeholder --var TRIP_ACCESS_TOKEN: --show-interactive-dev-session=false' : 'PORT=4173 npm start',
+    command: cloudflare ? 'CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV=false npx wrangler dev --port 4173 --var OPENAI_API_KEY:browser-test-placeholder --var TRIP_ACCESS_TOKEN: --var STATS_ADMIN_PASSWORD:browser-test-admin-password --var NTFY_TOPIC_URL: --var NTFY_TOKEN: --show-interactive-dev-session=false' : 'PORT=4173 npm start',
+    env: { OPENAI_API_KEY: 'browser-test-placeholder', STATS_ADMIN_PASSWORD: 'browser-test-admin-password', STATS_DB_PATH: ':memory:', NTFY_TOPIC_URL: '', NTFY_TOKEN: '', TRIP_ACCESS_TOKEN: '' },
     url: 'http://127.0.0.1:4173/api/health',
     reuseExistingServer: !cloudflare && !process.env.CI,
     timeout: 30_000,

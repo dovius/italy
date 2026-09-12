@@ -10,7 +10,7 @@ export function Notice({ children, retry, onDismiss }: { children: ReactNode; re
 export function ScreenHeader({ eyebrow, title, description, onBack }: { eyebrow: string; title: string; description: string; onBack: () => void }) {
   return <div className="screen-heading"><button className="back-button" onClick={onBack}><ArrowLeft size={21} /> Į pradžią</button><span className="eyebrow">{eyebrow}</span><h1 tabIndex={-1}>{title}</h1><p>{description}</p></div>;
 }
-export function Modal({ title, children, onClose, className = '' }: { title: string; children: ReactNode; onClose: () => void; className?: string }) {
+export function Modal({ title, children, onClose, className = '', dismissible = true }: { title: string; children: ReactNode; onClose: () => void; className?: string; dismissible?: boolean }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const dialog = ref.current!;
@@ -19,7 +19,7 @@ export function Modal({ title, children, onClose, className = '' }: { title: str
     dialog.showModal();
     return () => { dialog.close(); document.body.style.overflow = previous; };
   }, []);
-  return <dialog ref={ref} className={`modal ${className}`} aria-label={title} onCancel={(event) => { event.preventDefault(); onClose(); }} onClick={(event) => { if (event.target === event.currentTarget) onClose(); }}><div className="modal-inner"><div className="modal-heading"><h2>{title}</h2><button className="icon-button" autoFocus onClick={onClose} aria-label="Uždaryti"><X size={26} /></button></div>{children}</div></dialog>;
+  return <dialog ref={ref} className={`modal ${className}`} aria-label={title} onCancel={(event) => { event.preventDefault(); onClose(); }} onClick={(event) => { if (dismissible && event.target === event.currentTarget) onClose(); }}><div className="modal-inner"><div className="modal-heading"><h2>{title}</h2>{dismissible && <button className="icon-button" autoFocus onClick={onClose} aria-label="Uždaryti"><X size={26} /></button>}</div>{children}</div></dialog>;
 }
 export function ShowTranslation({ text, onClose, onSpeak, audioBusy, audioBlocked, audioError, resume }: { text: string; onClose: () => void; onSpeak: (text: string) => void; audioBusy: boolean; audioBlocked: boolean; audioError: string; resume: () => void }) {
   return <Modal title="Vertimas · Traduzione" onClose={onClose} className="translation-modal"><div className="translation-display"><span className="eyebrow">PARODYKITE PAŠNEKOVUI</span><p>{text}</p></div>{audioError && <Notice>{audioError}</Notice>}<div className="translation-controls"><button className="button secondary" disabled={audioBusy && !audioBlocked} onClick={() => audioBlocked ? resume() : onSpeak(text)}>{audioBusy && !audioBlocked ? <LoaderCircle className="spin" size={24} /> : <Volume2 size={24} />} {audioBlocked ? 'Paleisti garsą' : audioBusy ? 'Ruošiame…' : 'Pakartoti'}</button><button className="button primary" onClick={onClose}><Check size={24} /> Grįžti</button></div></Modal>;

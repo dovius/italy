@@ -6,6 +6,8 @@ import { resolve } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { build } from 'esbuild';
 import { Miniflare, Response as WorkerResponse, Log, LogLevel, type MiniflareOptions } from 'miniflare';
+import type { Activity, StatsPage } from '../../shared/stats';
+import { hash } from '../../server/stats-auth';
 
 const origin = 'https://trip.example';
 const calls: { path: string; body: any }[] = [];
@@ -15,6 +17,10 @@ let sequence = 0;
 let mf: Miniflare;
 let options: MiniflareOptions;
 let browser: string;
+const adminPassword = 'cloudflare-test-admin-password';
+let adminCookie = '';
+const notifications: { topic: string; title: string; message: string; click?: string }[] = [];
+let ntfyFailures = 0;
 const config = JSON.parse(await readFile('wrangler.jsonc', 'utf8'));
 const question = () => ({ requestId: randomUUID(), mode: 'assistant', messages: [{ role: 'user', text: 'Kaip paprašyti sąskaitos?' }] });
 const offer = { sdp: 'v=0\r\n' + 'test-offer'.repeat(5), history: [{ role: 'user', text: 'Ar galime čia statyti?' }, { role: 'assistant', text: 'Possiamo parcheggiare qui?' }] };
@@ -27,6 +33,10 @@ before(async () => {
   const bundle = await build({
     stdin: { contents: `
       export { default } from './cloudflare/worker';
+      import { ActivityLog as ProductionLog } from './cloudflare/activity-log';
+      export class ActivityLog extends ProductionLog {
+        async makeNotificationsDue() { this.ctx.storage.sql.exec("UPDATE stats_events SET notify_at = 0 WHERE notification = 'failed'"); await this.ctx.storage.setAlarm(Date.now()); }
+      }
       import { TripSession as ProductionSession } from './cloudflare/trip-session';
       export class TripSession extends ProductionSession {
         async inspect() { return [...await this.ctx.storage.list()]; }
@@ -48,10 +58,13 @@ before(async () => {
         env: {
           ...Object.fromEntries(Object.entries(config.vars as Record<string, string>).map(([name, value]) => [name, { type: 'text' as const, value }])),
           OPENAI_API_KEY: { type: 'text', value: 'local-test-placeholder' },
+          STATS_ADMIN_PASSWORD: { type: 'text', value: adminPassword },
+          NTFY_TOPIC_URL: { type: 'text', value: 'https://ntfy.test/italiano-test' },
           TRIP_SESSIONS: { type: 'durable-object', worker: config.name, exportName: 'TripSession' },
+          ACTIVITY_LOG: { type: 'durable-object', worker: config.name, exportName: 'ActivityLog' },
           ASSETS: { type: 'assets' },
         },
-        exports: { TripSession: { type: 'durable-object', storage: 'sqlite' } },
+        exports: { TripSession: { type: 'durable-object', storage: 'sqlite' }, ActivityLog: { type: 'durable-object', storage: 'sqlite' } },
         assets: { directory: resolve(config.assets.directory), hasUserWorker: true, notFoundHandling: config.assets.not_found_handling, runWorkerFirst: config.assets.run_worker_first },
       },
       dev: {
@@ -59,6 +72,10 @@ before(async () => {
         // OpenAI service is needed to run this suite.
         outboundService: { type: 'fetcher', handler: async (request) => {
           const url = new URL(request.url);
+          if (url.origin === 'https://ntfy.test') {
+            notifications.push(await request.json() as typeof notifications[number]);
+            return new WorkerResponse(null, { status: ntfyFailures-- > 0 ? 503 : 200 });
+          }
           assert.equal(url.origin, 'https://api.openai.com');
           assert.equal(request.headers.get('authorization'), 'Bearer local-test-placeholder');
           const path = url.pathname.slice('/v1/'.length);
@@ -148,7 +165,7 @@ test('provider failure is sanitized and a later retry can recover', async () => 
   assert.equal((await post('/api/chat', body)).status, 200);
 });
 
-test('photo follow-ups preserve the image and conversation without saving uploads', async () => {
+test('photo follow-ups keep upload content out of the temporary browser session storage', async () => {
   const visitor = randomUUID();
   const image = 'data:image/png;base64,iVBORw0KGgo=';
   const response = await post('/api/chat', { requestId: randomUUID(), mode: 'photo', image, messages: [{ role: 'user', text: 'Išverskite nuotrauką' }, { role: 'assistant', text: 'Stovėjimas mokamas.' }, { role: 'user', text: 'O sekmadienį?' }] }, visitor);
@@ -225,6 +242,79 @@ test('alarms clean expired answers and retry a failed live hangup', async () => 
   for (let i = 0; i < 30 && entries.length; i++) { await delay(100); entries = await object.inspect(); }
   assert.deepEqual(entries, []);
   assert.equal(calls.at(-1)!.path, `live/sessions/${live.session.id}/hangup`);
+});
+
+test('stats route is unindexed and admin authentication protects history and images independently of trip access', async () => {
+  const page = await mf.dispatchFetch(`${origin}/stats`, { headers: { 'Sec-Fetch-Mode': 'navigate' } });
+  assert.equal(page.status, 200);
+  assert.equal(page.headers.get('cache-control'), 'no-store');
+  assert.equal(page.headers.get('x-robots-tag'), 'noindex, nofollow');
+  for (const path of ['/api/stats', `/api/stats/images/${'a'.repeat(64)}`]) {
+    const response = await mf.dispatchFetch(`${origin}${path}`, { headers: { Cookie: cookieFor(browser) } });
+    assert.equal(response.status, 401);
+    assert.equal(response.headers.get('cache-control'), 'no-store');
+  }
+  assert.equal((await post('/api/stats/login', { password: adminPassword }, browser, { Origin: 'https://other.test' })).status, 403);
+  assert.equal((await post('/api/stats/login', { password: 'wrong' })).status, 401);
+  const login = await post('/api/stats/login', { password: adminPassword });
+  assert.equal(login.status, 200);
+  const cookie = login.headers.get('set-cookie')!;
+  for (const flag of ['HttpOnly', 'Secure', 'SameSite=Strict', 'Path=/api/stats']) assert.ok(cookie.includes(flag));
+  adminCookie = cookie.split(';')[0];
+});
+
+const statsPage = (query = '') => mf.dispatchFetch(`${origin}/api/stats${query}`, { headers: { Cookie: adminCookie } }).then(response => response.json() as Promise<StatsPage>);
+test('activity history, photos, names, and caption ownership survive durable object eviction', async () => {
+  const visitor = randomUUID();
+  const image = 'data:image/jpeg;base64,' + 'YQ'.repeat(1_100_000);
+  const body = { ...question(), mode: 'photo', image, imageName: 'meniu.jpg', conversationId: randomUUID() };
+  assert.equal((await post('/api/chat', body, visitor)).status, 200);
+  assert.equal((await post('/api/chat', body, visitor)).status, 200);
+  await mf.unsafeEvictDurableObject(config.name, 'ActivityLog', { name: 'trip' });
+  const id = await hash(visitor);
+  let data = await statsPage(`?visitor=${id}`);
+  assert.equal(data.total, 1);
+  assert.equal(data.events[0].answer, 'Galite pasakyti: „Il conto, per favore.“');
+  const photo = await mf.dispatchFetch(`${origin}/api/stats/images/${data.events[0].imageId}`, { headers: { Cookie: adminCookie } });
+  assert.equal(photo.status, 200);
+  assert.equal((await photo.arrayBuffer()).byteLength, Buffer.from(image.split(',')[1], 'base64').byteLength);
+  assert.equal((await post(`/api/stats/visitors/${id}`, { name: 'Dovydas' }, visitor, { Cookie: adminCookie })).status, 200);
+  const live = await (await post('/api/live/session', offer, visitor)).json() as { session: { id: string } };
+  const fragments = { sessionId: live.session.id, fragments: [
+    { session: live.session.id, id: 'a', role: 'user', text: 'Ar galima?', start: 0, end: 100 },
+    { session: live.session.id, id: 'b', role: 'assistant', text: 'È possibile?', start: 100, end: 200 },
+  ] };
+  assert.equal((await post('/api/live/fragments', fragments, randomUUID())).status, 403);
+  await mf.unsafeEvictDurableObject(config.name, 'TripSession', { name: visitor });
+  assert.equal((await post('/api/live/fragments', fragments, visitor)).status, 204);
+  assert.equal((await post('/api/live/end', { sessionId: live.session.id }, visitor)).status, 204);
+  assert.equal((await post('/api/live/fragments', fragments, visitor)).status, 204);
+  data = await statsPage(`?kind=live&visitor=${id}&q=Dovydas`);
+  assert.equal(data.total, 1);
+  const event = await mf.dispatchFetch(`${origin}/api/stats/events/${data.events[0].id}`, { headers: { Cookie: adminCookie } }).then(response => response.json() as Promise<Activity>);
+  assert.equal(event.fragments?.length, 2);
+  assert.equal(event.status, 'ended');
+  assert.equal(event.visitorName, 'Dovydas');
+  assert.equal(event.answer, 'È possibile?');
+});
+
+test('ntfy failures persist for alarm retries while successful AI answers remain usable', async () => {
+  const visitor = randomUUID();
+  ntfyFailures = 1;
+  assert.equal((await post('/api/chat', question(), visitor)).status, 200);
+  let data = await statsPage(`?visitor=${await hash(visitor)}`);
+  for (let i = 0; i < 30 && data.events[0]?.notification !== 'failed'; i++) { await delay(50); data = await statsPage(`?visitor=${await hash(visitor)}`); }
+  assert.equal(data.events[0].notification, 'failed');
+  assert.equal(data.events[0].status, 'complete');
+  await mf.unsafeEvictDurableObject(config.name, 'ActivityLog', { name: 'trip' });
+  const store = (await mf.getDurableObjectNamespace('ACTIVITY_LOG')).getByName('trip') as unknown as { makeNotificationsDue(): Promise<void> };
+  await store.makeNotificationsDue();
+  for (let i = 0; i < 30 && data.events[0].notification !== 'sent'; i++) { await delay(50); data = await statsPage(`?visitor=${await hash(visitor)}`); }
+  assert.equal(data.events[0].notification, 'sent');
+  const notification = notifications.find(item => item.click?.endsWith(data.events[0].id))!;
+  assert.equal(notification.topic, 'italiano-test');
+  assert.match(notification.message, /Il conto/);
+  assert.ok(notification.click?.startsWith(`${origin}/stats?event=`));
 });
 
 test('optional invitation redirects to a clean URL and enables anonymous access', async () => {

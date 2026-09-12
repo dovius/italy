@@ -13,11 +13,11 @@ function context(messages: Message[]) {
   return result;
 }
 
-export function useChat(mode: ChatMode, messages: Message[], image: string | undefined, onChange: (messages: Message[]) => void) {
+export function useChat(mode: ChatMode, messages: Message[], image: string | undefined, onChange: (messages: Message[]) => void, imageName?: string) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const current = useRef({ messages, image, onChange });
-  current.current = { messages, image, onChange };
+  const current = useRef({ messages, image, onChange, imageName });
+  current.current = { messages, image, onChange, imageName };
   const controller = useRef<AbortController | null>(null);
   const active = useRef(false);
   const recoverable = useRef(false);
@@ -31,7 +31,7 @@ export function useChat(mode: ChatMode, messages: Message[], image: string | und
     const abort = new AbortController();
     controller.current = abort;
     const last = history.at(-1)!;
-    const body = { requestId: last.id, mode, messages: context(history), ...(mode === 'photo' ? { image: current.current.image } : {}) };
+    const body = { requestId: last.id, conversationId: history[0].id, mode, messages: context(history), ...(mode === 'photo' ? { image: current.current.image, imageName: current.current.imageName } : {}) };
     try {
       let response: Response;
       try { response = await request('/api/chat', body, abort.signal); }
@@ -56,11 +56,11 @@ export function useChat(mode: ChatMode, messages: Message[], image: string | und
     }
   }, [mode]);
 
-  const send = useCallback((text: string, initialImage?: string) => {
+  const send = useCallback((text: string, initialImage?: string, initialImageName?: string) => {
     if (!text.trim() || active.current) return;
     const previous = initialImage ? [] : current.current.messages;
     const history = [...previous, { id: crypto.randomUUID(), role: 'user' as const, text: text.trim() }];
-    if (initialImage) current.current.image = initialImage;
+    if (initialImage) { current.current.image = initialImage; current.current.imageName = initialImageName; }
     current.current.onChange(history);
     void perform(history);
   }, [perform]);

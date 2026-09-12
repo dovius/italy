@@ -8,6 +8,7 @@ export async function mockLive(page: Page) {
     await route.fulfill({ status: 201, json: { session: { id: `live_${connections.length}` }, transport: { sdp: 'v=0\r\nanswer', type: 'webrtc' } } });
   });
   await page.route('**/api/live/end', (route) => route.fulfill({ status: 204 }));
+  await page.route('**/api/live/fragments', (route) => route.fulfill({ status: 204 }));
   await page.addInitScript(() => {
     const state = window as any;
     state.captureStreams = [];

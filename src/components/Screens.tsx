@@ -2,26 +2,36 @@ import { useRef, type ChangeEvent, type CSSProperties } from 'react';
 import { ArrowRight, Camera, Check, Eye, ImagePlus, LoaderCircle, MessageCircle, Mic, MicOff, ParkingCircle, PhoneOff, TrainFront, Utensils, Volume2 } from 'lucide-react';
 import type { Message, PhotoContext, TranscriptRow } from '../../shared/types';
 import type { LiveStatus } from '../lib/live';
+import type { ListeningStopReason, ListeningWarning } from '../lib/listeningGuard';
 import type { useChat } from '../hooks/useChat';
-import { Captions, Composer, Conversation, Notice, ScreenHeader } from './UI';
+import { Captions, Composer, Conversation, Modal, Notice, ScreenHeader } from './UI';
 import { PhotoIllustration } from './Illustrations';
 
 type ChatController = ReturnType<typeof useChat>;
 
-export function LiveScreen({ status, error, level, rows, muted, blocked, elapsed, onBack, start, end, play, speak, show }: {
-  status: LiveStatus; error: string; level: number; rows: TranscriptRow[]; muted: boolean; blocked: boolean; elapsed: number;
+export function ListeningWarningDialog({ warning, onContinue, onEnd }: { warning: ListeningWarning; onContinue: () => void; onEnd: () => void }) {
+  return <Modal title="Ar dar kalbatės?" className="listening-warning" onClose={onEnd} dismissible={false}>
+    <p className="modal-lead">{warning.reason === 'silence' ? 'Kurį laiką negirdime kalbos.' : 'Pokalbis trunka beveik 10 minučių.'}</p>
+    <p className="listening-countdown">Mikrofonas išsijungs po <strong>{warning.seconds} s</strong></p>
+    <div className="listening-actions"><button className="button primary" autoFocus onClick={onContinue}><Mic size={23} aria-hidden="true" /> Tęsti pokalbį</button><button className="button secondary" onClick={onEnd}><PhoneOff size={22} aria-hidden="true" /> Baigti pokalbį</button></div>
+  </Modal>;
+}
+
+export function LiveScreen({ status, error, stopReason, level, rows, muted, blocked, elapsed, onBack, start, end, play, speak, show }: {
+  status: LiveStatus; error: string; stopReason: ListeningStopReason | null; level: number; rows: TranscriptRow[]; muted: boolean; blocked: boolean; elapsed: number;
   onBack: () => void; start: () => void; end: () => void; play: () => void; speak: (text: string) => void; show: (text: string) => void;
 }) {
   const active = ['connecting', 'connected', 'reconnecting'].includes(status);
   const last = [...rows].reverse().find((row) => row.role === 'assistant');
   const clock = `${Math.floor(elapsed / 60).toString().padStart(2, '0')}:${(elapsed % 60).toString().padStart(2, '0')}`;
   // Readiness is confirmed by the live session, not inferred from microphone volume.
-  const stateText = status === 'connecting' ? 'JUNGIAMĖS…' : status === 'reconnecting' ? 'ATKURIAME RYŠĮ…' : status === 'connected' && blocked ? 'ĮJUNKITE GARSĄ' : muted && active ? 'MIKROFONAS PRISTABDYTAS' : status === 'connected' ? 'KALBĖKITE' : status === 'ended' ? 'Ačiū už pokalbį.' : status === 'error' ? 'Nepavyko prisijungti.' : 'Pasiruošę kalbėtis?';
-  const stateHint = status === 'connecting' ? 'Jei telefonas paprašys mikrofono, pasirinkite „Leisti“.' : status === 'reconnecting' ? 'Palaukite. Pokalbis tęsis, kai grįš ryšys.' : muted && active ? 'Baigę klausytis vertimo galėsite kalbėti toliau.' : status === 'connected' && blocked ? 'Paspauskite žemiau, kad girdėtumėte vertimą.' : status === 'connected' ? 'Klausomės jūsų ir pašnekovo. Verčiame abiem kryptimis.' : status === 'ended' ? 'Galite tęsti tą patį pokalbį.' : 'Paspauskite „Pradėti pokalbį“.';
-  return <main className="tool-page live-page" id="main-content"><ScreenHeader eyebrow="GYVAS VERTĖJAS" title="Kalbėtis" description="Jūs kalbate. Mes išverčiame balsu." onBack={onBack} /><div className="language-strip"><span><span className="lithuanian-flag" aria-hidden="true" /> Lietuvių</span><span className="language-arrows" aria-hidden="true">⇄</span><span><span className="italian-flag" aria-hidden="true" /> Italų</span></div>
+  const stoppedHint = stopReason === 'silence' ? '2 minutes negirdėjome kalbos.' : stopReason === 'duration' ? 'Praėjo 10 minučių. Galite tęsti pokalbį.' : 'Išėjus iš vertėjo, pokalbis sustabdomas.';
+  const stateText = status === 'connecting' ? 'JUNGIAMĖS…' : status === 'reconnecting' ? 'ATKURIAME RYŠĮ…' : status === 'connected' && blocked ? 'ĮJUNKITE GARSĄ' : muted && active ? 'MIKROFONAS PRISTABDYTAS' : status === 'connected' ? 'KALBĖKITE' : status === 'ended' ? stopReason ? 'Mikrofonas išjungtas' : 'Ačiū už pokalbį.' : status === 'error' ? 'Nepavyko prisijungti.' : 'Pasiruošę kalbėtis?';
+  const stateHint = status === 'connecting' ? 'Jei telefonas paprašys mikrofono, pasirinkite „Leisti“.' : status === 'reconnecting' ? 'Palaukite. Pokalbis tęsis, kai grįš ryšys.' : muted && active ? 'Baigę klausytis vertimo galėsite kalbėti toliau.' : status === 'connected' && blocked ? 'Paspauskite žemiau, kad girdėtumėte vertimą.' : status === 'connected' ? 'Klausomės jūsų ir pašnekovo. Verčiame abiem kryptimis.' : status === 'ended' ? stopReason ? stoppedHint : 'Galite tęsti tą patį pokalbį.' : 'Paspauskite „Pradėti pokalbį“.';
+  return <main className="tool-page live-page" id="main-content" data-status={status}><ScreenHeader eyebrow="GYVAS VERTĖJAS" title="Kalbėtis" description="Jūs kalbate. Mes išverčiame balsu." onBack={onBack} /><div className="language-strip"><span><span className="lithuanian-flag" aria-hidden="true" /> Lietuvių</span><span className="language-arrows" aria-hidden="true">⇄</span><span><span className="italian-flag" aria-hidden="true" /> Italų</span></div>
     {error && status !== 'reconnecting' && <Notice retry={!active ? start : undefined}>{error}</Notice>}
     <section className={`live-stage ${status === 'connected' && !muted ? 'is-live' : ''}`} aria-label="Pokalbio būsena"><div className="live-stage-top"><span className={`connection-label ${status === 'connected' ? 'connected' : ''}`}><span className="mini-dot" />{status === 'connected' ? 'POKALBIS VYKSTA' : status === 'connecting' ? 'JUNGIAMĖS' : status === 'reconnecting' ? 'ATKURIAME RYŠĮ' : status === 'ended' ? 'POKALBIS BAIGTAS' : status === 'error' ? 'NEPRISIJUNGTA' : 'PASIRUOŠĘ KALBĖTIS'}</span>{active && <span className="call-clock">{clock}</span>}</div>
-      <div className="live-orb" aria-hidden="true">{status === 'connecting' || status === 'reconnecting' ? <LoaderCircle className="spin" size={38} /> : muted ? <MicOff size={38} strokeWidth={1.5} /> : <Mic size={38} strokeWidth={1.5} />}</div>
+      <div className="live-orb" aria-hidden="true">{status === 'connecting' || status === 'reconnecting' ? <LoaderCircle className="spin" size={38} /> : muted || status === 'ended' ? <MicOff size={38} strokeWidth={1.5} /> : <Mic size={38} strokeWidth={1.5} />}</div>
       <h2 aria-live="polite">{stateText}</h2>
       <p>{stateHint}</p>
       <div className="sound-wave" aria-hidden="true">{Array.from({ length: 25 }, (_, index) => <i key={index} style={{ '--bar-height': `${6 + (Math.sin(index * 1.8) * 0.5 + 0.5) * level * 45}px`, '--bar-opacity': 0.35 + level * 0.65 } as CSSProperties} />)}</div>

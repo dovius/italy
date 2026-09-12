@@ -29,7 +29,7 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
         navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/api\//, /^\/join\//],
+        navigateFallbackDenylist: [/^\/api(?:\/|$)/, /^\/join(?:\/|$)/, /^\/stats(?:\/|$)/],
         cleanupOutdatedCaches: true,
         // Personal photos, audio and API replies never enter the service-worker cache.
         runtimeCaching: [],

@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { parse } from 'dotenv';
 
-// Copy only the two supported secrets. Never upload local PORT, HOST, APP_ORIGIN,
+// Copy only supported server configuration. Never upload local PORT, HOST, APP_ORIGIN,
 // or unrelated environment entries; never print any secret values.
 try {
   const existing = await readFile('.dev.vars', 'utf8').catch(error => { if (error.code === 'ENOENT') return null; throw error; });
@@ -12,7 +12,8 @@ try {
     const source = parse(await readFile('.env', 'utf8').catch(error => { if (error.code === 'ENOENT') return ''; throw error; }));
     const key = source.OPENAI_API_KEY || process.env.OPENAI_API_KEY;
     if (!key?.trim()) throw new Error('Pirmiausia įrašykite OPENAI_API_KEY į .env arba nukopijuokite .dev.vars.example į .dev.vars ir įrašykite raktą ten.');
-    const secrets = { OPENAI_API_KEY: key, ...(source.TRIP_ACCESS_TOKEN ? { TRIP_ACCESS_TOKEN: source.TRIP_ACCESS_TOKEN } : {}) };
+    const names = ['TRIP_ACCESS_TOKEN', 'STATS_ADMIN_PASSWORD', 'STATS_RETENTION_DAYS', 'NTFY_TOPIC_URL', 'NTFY_TOKEN'];
+    const secrets = { OPENAI_API_KEY: key, ...Object.fromEntries(names.flatMap(name => { const value = source[name] || process.env[name]; return value ? [[name, value]] : []; })) };
     const content = Object.entries(secrets).map(([name, value]) => `${name}=${JSON.stringify(value)}`).join('\n') + '\n';
     await writeFile('.dev.vars', content, { flag: 'wx', mode: 0o600 });
     console.log('Paruoštas privatus .dev.vars failas. API raktas nebus įtrauktas į svetainės failus ar Git.');

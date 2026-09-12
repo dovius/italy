@@ -1,0 +1,1012 @@
+[
+  {
+    "name": "home-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 1008
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 453.390625,
+        "bottom": 510.390625,
+        "width": 294,
+        "height": 57
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.390625,
+        "bottom": 577.390625,
+        "width": 294,
+        "height": 57
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 202.609375,
+        "bottom": 597.390625,
+        "width": 334,
+        "height": 394.78125
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 1031
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 384,
+        "bottom": 450,
+        "width": 290,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 375,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 339,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 163.5,
+        "height": 188.875
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 375,
+      "height": 1008
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 459.390625,
+        "bottom": 516.390625,
+        "width": 309,
+        "height": 57
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 526.390625,
+        "bottom": 583.390625,
+        "width": 309,
+        "height": 57
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 208.609375,
+        "bottom": 603.390625,
+        "width": 349,
+        "height": 394.78125
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-375x812",
+    "viewport": {
+      "width": 375,
+      "height": 812,
+      "clientHeight": 812,
+      "visualHeight": 812,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 375,
+      "height": 1019
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 372,
+        "bottom": 438,
+        "width": 305,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 844
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 1008
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 475.390625,
+        "bottom": 532.390625,
+        "width": 318,
+        "height": 57
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 542.390625,
+        "bottom": 599.390625,
+        "width": 318,
+        "height": 57
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 221.609375,
+        "bottom": 622.390625,
+        "width": 364,
+        "height": 400.78125
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-390x844",
+    "viewport": {
+      "width": 390,
+      "height": 844,
+      "clientHeight": 844,
+      "visualHeight": 844,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 1019
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 372,
+        "bottom": 438,
+        "width": 320,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 1002
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 519.390625,
+        "bottom": 576.390625,
+        "width": 358,
+        "height": 57
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 586.390625,
+        "bottom": 643.390625,
+        "width": 358,
+        "height": 57
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 265.609375,
+        "bottom": 666.390625,
+        "width": 404,
+        "height": 400.78125
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 1013
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 372,
+        "bottom": 438,
+        "width": 360,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 820
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 354,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 171,
+        "height": 195.375
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 838
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 373.390625,
+        "bottom": 430.390625,
+        "width": 318,
+        "height": 57
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 440.390625,
+        "bottom": 497.390625,
+        "width": 318,
+        "height": 57
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 119.609375,
+        "bottom": 520.390625,
+        "width": 364,
+        "height": 400.78125
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-390x640",
+    "viewport": {
+      "width": 390,
+      "height": 640,
+      "clientHeight": 640,
+      "visualHeight": 640,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 390,
+      "height": 912
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 334,
+        "bottom": 400,
+        "width": 320,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 768,
+      "height": 1109
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 505.15625,
+        "bottom": 837.90625,
+        "width": 226,
+        "height": 332.75
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 768,
+      "height": 1500
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 565.59375,
+        "bottom": 623.59375,
+        "width": 380,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 633.59375,
+        "bottom": 691.59375,
+        "width": 380,
+        "height": 58
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 302.40625,
+        "bottom": 721.59375,
+        "width": 440,
+        "height": 419.1875
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-768x1024",
+    "viewport": {
+      "width": 768,
+      "height": 1024,
+      "clientHeight": 1024,
+      "visualHeight": 1024,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 768,
+      "height": 1479
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 787.46875,
+        "bottom": 853.46875,
+        "width": 218.890625,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1024,
+      "height": 1143
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.328125,
+        "height": 325.09375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.328125,
+        "height": 325.09375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 547.265625,
+        "bottom": 872.359375,
+        "width": 293.34375,
+        "height": 325.09375
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1024,
+      "height": 1508
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 503.59375,
+        "bottom": 561.59375,
+        "width": 380,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 571.59375,
+        "bottom": 629.59375,
+        "width": 380,
+        "height": 58
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 240.40625,
+        "bottom": 659.59375,
+        "width": 440,
+        "height": 419.1875
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-1024x900",
+    "viewport": {
+      "width": 1024,
+      "height": 900,
+      "clientHeight": 900,
+      "visualHeight": 900,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1024,
+      "height": 1488
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 796.15625,
+        "bottom": 862.15625,
+        "width": 218.890625,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1440,
+      "height": 1221
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.65625,
+        "height": 318
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.671875,
+        "height": 318
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 631.609375,
+        "bottom": 949.609375,
+        "width": 366.65625,
+        "height": 318
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1440,
+      "height": 1518
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 593.59375,
+        "bottom": 651.59375,
+        "width": 380,
+        "height": 58
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 661.59375,
+        "bottom": 719.59375,
+        "width": 380,
+        "height": 58
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 330.40625,
+        "bottom": 749.59375,
+        "width": 440,
+        "height": 419.1875
+      }
+    ]
+  },
+  {
+    "name": "stopped-chromium-1440x1080",
+    "viewport": {
+      "width": 1440,
+      "height": 1080,
+      "clientHeight": 1080,
+      "visualHeight": 1080,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 1440,
+      "height": 1497
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 805.71875,
+        "bottom": 871.71875,
+        "width": 218.890625,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 814
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 324,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 574.609375,
+        "width": 156,
+        "height": 188.875
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 1008
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 453.390625,
+        "bottom": 510.390625,
+        "width": 294,
+        "height": 57
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 520.390625,
+        "bottom": 577.390625,
+        "width": 294,
+        "height": 57
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 202.609375,
+        "bottom": 597.390625,
+        "width": 334,
+        "height": 394.78125
+      }
+    ]
+  },
+  {
+    "name": "stopped-webkit-360x800",
+    "viewport": {
+      "width": 360,
+      "height": 800,
+      "clientHeight": 800,
+      "visualHeight": 800,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 360,
+      "height": 1031
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 384,
+        "bottom": 450,
+        "width": 290,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "home-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 932
+    },
+    "actions": [
+      {
+        "text": "GYVAIKalbėtisGyvas lietuvių ↔ italų vertimasKalbėkite lietuviškai.Išversime abiem pusėms.Pradėti pokalbį",
+        "top": 135.75,
+        "bottom": 373.734375,
+        "width": 394,
+        "height": 237.984375
+      },
+      {
+        "text": "Aa Išversti nuotraukąMeniu, ženklai, bilietaiViskas aiškiai lietuviškai.Pasirinkti nuotrauką",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      },
+      {
+        "text": "Ciao!Paklausti apie ItalijąKelionės asistentasAtsakymai paprastai, lietuviškai.Užduoti klausimą",
+        "top": 385.734375,
+        "bottom": 581.109375,
+        "width": 191,
+        "height": 195.375
+      }
+    ],
+    "dialog": []
+  },
+  {
+    "name": "warning-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 1002
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 519.390625,
+        "bottom": 576.390625,
+        "width": 358,
+        "height": 57
+      },
+      {
+        "text": "Baigti pokalbį",
+        "top": 586.390625,
+        "bottom": 643.390625,
+        "width": 358,
+        "height": 57
+      }
+    ],
+    "dialog": [
+      {
+        "text": "Ar dar kalbatės?Kurį laiką negirdime kalbos.Mikrofonas išsijungs po 20 s Tęsti pokalbį Baigti pokalbį",
+        "top": 265.609375,
+        "bottom": 666.390625,
+        "width": 404,
+        "height": 400.78125
+      }
+    ]
+  },
+  {
+    "name": "stopped-webkit-430x932",
+    "viewport": {
+      "width": 430,
+      "height": 932,
+      "clientHeight": 932,
+      "visualHeight": 932,
+      "scrollY": 0
+    },
+    "document": {
+      "width": 430,
+      "height": 1013
+    },
+    "actions": [
+      {
+        "text": "Tęsti pokalbį",
+        "top": 372,
+        "bottom": 438,
+        "width": 360,
+        "height": 66
+      }
+    ],
+    "dialog": []
+  }
+]

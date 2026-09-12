@@ -3,6 +3,7 @@ import { Camera, Check, CircleHelp, Download, Heart, LoaderCircle, MessageCircle
 import type { SavedTrip, Screen } from '../shared/types';
 import { emptyTrip, readTrip, writeTrip } from './lib/storage';
 import { LiveConversation, type LiveStatus } from './lib/live';
+import type { ListeningStopReason, ListeningWarning } from './lib/listeningGuard';
 import { groupTranscripts } from './lib/transcripts';
 import { prepareImage } from './lib/image';
 import { useChat } from './hooks/useChat';
@@ -10,7 +11,7 @@ import { useSpeech } from './hooks/useSpeech';
 import { useNetwork } from './hooks/useNetwork';
 import { LogoMark } from './components/Illustrations';
 import { Home } from './components/Home';
-import { AssistantScreen, LiveScreen, PhotoScreen } from './components/Screens';
+import { AssistantScreen, ListeningWarningDialog, LiveScreen, PhotoScreen } from './components/Screens';
 import { Modal, Notice, ShowTranslation } from './components/UI';
 
 interface InstallEvent extends Event { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> }
@@ -45,6 +46,8 @@ function TripApp({ trip, setTrip, storageError }: { trip: SavedTrip; setTrip: Di
   const [installed, setInstalled] = useState(window.matchMedia('(display-mode: standalone)').matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone));
   const [status, setStatus] = useState<LiveStatus>('idle');
   const [liveError, setLiveError] = useState('');
+  const [listeningWarning, setListeningWarning] = useState<ListeningWarning | null>(null);
+  const [stopReason, setStopReason] = useState<ListeningStopReason | null>(null);
   const [blocked, setBlocked] = useState(false);
   const [level, setLevel] = useState(0);
   const [elapsed, setElapsed] = useState(0);
@@ -59,7 +62,7 @@ function TripApp({ trip, setTrip, storageError }: { trip: SavedTrip; setTrip: Di
   const speech = useSpeech();
   const rows = useMemo(() => groupTranscripts(trip.transcripts), [trip.transcripts]);
   const assistant = useChat('assistant', trip.assistant, undefined, (messages) => setTrip((previous) => ({ ...previous, assistant: messages })));
-  const photo = useChat('photo', trip.photo?.messages || [], trip.photo?.dataUrl, (messages) => setTrip((previous) => ({ ...previous, photo: previous.photo ? { ...previous.photo, messages } : null })));
+  const photo = useChat('photo', trip.photo?.messages || [], trip.photo?.dataUrl, (messages) => setTrip((previous) => ({ ...previous, photo: previous.photo ? { ...previous.photo, messages } : null })), trip.photo?.name);
   const muted = Boolean(showText) || speech.busy || speech.playing || speech.blocked;
   const active = ['connecting', 'connected', 'reconnecting'].includes(status);
 
@@ -77,6 +80,7 @@ function TripApp({ trip, setTrip, storageError }: { trip: SavedTrip; setTrip: Di
   useEffect(() => {
     const conversation = new LiveConversation(audio.current!, {
       status: setStatus, error: setLiveError, blocked: setBlocked, level: setLevel,
+      warning: setListeningWarning, stopped: setStopReason,
       history: () => tripRef.current.transcripts,
       fragment: (fragment) => setTrip((previous) => previous.transcripts.some((f) => f.id === fragment.id) ? previous : { ...previous, transcripts: [...previous.transcripts, fragment].slice(-800) }),
     });
@@ -84,6 +88,11 @@ function TripApp({ trip, setTrip, storageError }: { trip: SavedTrip; setTrip: Di
     return () => conversation.dispose();
   }, [setTrip]);
   useEffect(() => { live.current?.setMuted(muted); }, [muted]);
+  useEffect(() => {
+    if (!stopReason) return;
+    setShowText(null);
+    speech.stop();
+  }, [stopReason]);
   useEffect(() => {
     if (screen !== 'live') live.current?.end();
     speech.stop();
@@ -120,7 +129,7 @@ function TripApp({ trip, setTrip, storageError }: { trip: SavedTrip; setTrip: Di
       const dataUrl = await prepareImage(file);
       photo.cancel();
       setTrip((previous) => ({ ...previous, photo: { dataUrl, name: file.name, messages: [] }, drafts: { ...previous.drafts, photo: '' } }));
-      photo.send('Išverskite ir paprastai paaiškinkite šią nuotrauką.', dataUrl);
+      photo.send('Išverskite ir paprastai paaiškinkite šią nuotrauką.', dataUrl, file.name);
     } catch (error) { setPhotoError(error instanceof Error ? error.message : 'Nepavyko atverti nuotraukos.'); }
     finally { setSelecting(false); }
   }
@@ -141,7 +150,7 @@ function TripApp({ trip, setTrip, storageError }: { trip: SavedTrip; setTrip: Di
     {!online && <div className="offline-banner" role="status"><WifiOff size={23} /><span>Nėra interneto. Išsaugotą tekstą galite skaityti, o prisijungę – tęsti.</span></div>}
     {storageError && <div className="storage-notice"><Notice>Ši naršyklė negali išsaugoti pokalbio. Neužverkite šio lango, kol norite tęsti.</Notice></div>}
     {screen === 'home' && <Home navigate={navigate} startLive={startLive} />}
-    {screen === 'live' && <LiveScreen status={status} error={liveError} level={level} rows={rows} muted={muted} blocked={blocked} elapsed={elapsed} onBack={() => navigate('home')} start={startLive} end={endLive} play={() => void live.current?.play()} speak={(text) => void speech.speak(text)} show={setShowText} />}
+    {screen === 'live' && <LiveScreen status={status} error={liveError} stopReason={stopReason} level={level} rows={rows} muted={muted} blocked={blocked} elapsed={elapsed} onBack={() => navigate('home')} start={startLive} end={endLive} play={() => void live.current?.play()} speak={(text) => void speech.speak(text)} show={setShowText} />}
     {screen === 'photo' && <PhotoScreen photo={trip.photo} chat={photo} selecting={selecting} error={photoError} draft={trip.drafts.photo} setDraft={(value) => draft('photo', value)} onBack={() => navigate('home')} onPhoto={(file) => void selectPhoto(file)} speak={(text) => void speech.speak(text)} />}
     {screen === 'assistant' && <AssistantScreen messages={trip.assistant} chat={assistant} draft={trip.drafts.assistant} setDraft={(value) => draft('assistant', value)} onBack={() => navigate('home')} speak={(text) => void speech.speak(text)} clear={() => setReset('assistant')} />}
     <footer className="site-footer"><span><Heart size={16} /> Sukurta ramesnėms kelionėms.</span>{!installed ? <button onClick={() => void install()}><Smartphone size={18} /> Įsidėti į telefoną <span aria-hidden="true">↗</span></button> : <span><Check size={18} /> Jūsų telefone</span>}</footer>
@@ -152,9 +161,10 @@ function TripApp({ trip, setTrip, storageError }: { trip: SavedTrip; setTrip: Di
       <div className="help-step"><span className="help-step-icon sand"><Camera size={25} aria-hidden="true" /></span><div><h3>Išversti nuotrauką</h3><p>Nufotografuokite meniu, ženklą ar bilietą. Galite įkelti ir turimą nuotrauką.</p></div></div>
       <div className="help-step"><span className="help-step-icon sage"><MessageCircle size={25} aria-hidden="true" /></span><div><h3>Paklausti apie Italiją</h3><p>Parašykite arba pasakykite klausimą apie kelionę.</p></div></div>
       <button className="button primary full-width" onClick={() => setHelp(false)}><Check size={22} /> Supratau</button>
-      <details className="help-detail"><summary>Ryšys ir privatumas</summary><p>Naujiems vertimams reikia interneto. Pokalbio tekstas ir paskutinė nuotrauka išsaugomi šiame telefone.</p><p>Vertimui garsas, nuotraukos ir klausimai siunčiami „OpenAI“. Garso įrašų mūsų serveris nesaugo. Kad nutrūkus ryšiui galėtume grąžinti atsakymą, jo kopiją serveryje laikome apie 10 minučių. Balso pokalbis baigiamas išėjus iš jo ekrano.</p><button className="clear-data" onClick={() => setReset('all')}>Ištrinti šiame telefone išsaugotą pokalbį ir nuotrauką</button></details>
+      <details className="help-detail"><summary>Ryšys ir privatumas</summary><p>Naujiems vertimams reikia interneto. Pokalbio tekstas ir paskutinė nuotrauka išsaugomi šiame telefone.</p><p>Vertimui garsas, nuotraukos ir klausimai siunčiami „OpenAI“. Garso įrašų mūsų serveris nesaugo. Kai įjungta kelionės istorija, organizatorius gali matyti išsiųstas nuotraukas, klausimus, diktuotą tekstą, atsakymus ir balso pokalbių tekstus. Pranešimai apie veiklą gali būti siunčiami organizatoriui per „ntfy“. Naršyklės žymėjimas leidžia susieti tos pačios naršyklės veiksmus. Balso pokalbis baigiamas išėjus iš jo ekrano.</p><button className="clear-data" onClick={() => setReset('all')}>Ištrinti šiame telefone išsaugotą pokalbį ir nuotrauką</button></details>
     </Modal>}
     {installHelp && <Modal title="Vertėjas – visada po ranka." onClose={() => setInstallHelp(false)}><div className="install-symbol"><Download size={35} /></div><p className="modal-lead">Įsidėkite į telefono pradžios ekraną. Kitą kartą užteks paliesti piktogramą.</p><div className="install-instructions"><h3>„iPhone“ su „Safari“</h3><p>Paspauskite „Bendrinti“ <span aria-hidden="true">↑</span>, tada „Pridėti prie pradžios ekrano“ ir „Pridėti“.</p><h3>„Android“ su „Chrome“</h3><p>Atverkite naršyklės meniu <span aria-hidden="true">⋮</span> ir pasirinkite „Pridėti prie pagrindinio ekrano“ arba „Įdiegti programą“.</p></div><button className="button primary full-width" onClick={() => setInstallHelp(false)}>Supratau</button></Modal>}
     {reset && <Modal title={reset === 'all' ? 'Ištrinti išsaugotą informaciją?' : 'Pradėti naują pokalbį?'} onClose={() => setReset(null)}><p className="modal-lead">{reset === 'all' ? 'Iš šio telefono bus pašalinti pokalbiai, juodraščiai ir nuotrauka.' : 'Ankstesnio pokalbio tekstas bus pašalintas. Galėsite klausti nauja tema.'}</p><div className="dialog-actions"><button className="button secondary" onClick={() => setReset(null)}>Grįžti</button><button className="button primary" onClick={confirmReset}>{reset === 'all' ? 'Ištrinti' : 'Pradėti naują'}</button></div></Modal>}
+    {screen === 'live' && listeningWarning && <ListeningWarningDialog warning={listeningWarning} onContinue={() => live.current?.continueListening()} onEnd={endLive} />}
   </div>;
 }

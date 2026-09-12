@@ -12,13 +12,17 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api", "/api/*", "/join", "/join/*"]
+    "run_worker_first": ["/api", "/api/*", "/join", "/join/*", "/stats", "/stats/*"]
   },
   "durable_objects": {
-    "bindings": [{ "name": "TRIP_SESSIONS", "class_name": "TripSession" }]
+    "bindings": [
+      { "name": "TRIP_SESSIONS", "class_name": "TripSession" },
+      { "name": "ACTIVITY_LOG", "class_name": "ActivityLog" }
+    ]
   },
   "migrations": [
-    { "tag": "v1", "new_sqlite_classes": ["TripSession"] }
+    { "tag": "v1", "new_sqlite_classes": ["TripSession"] },
+    { "tag": "v2", "new_sqlite_classes": ["ActivityLog"] }
   ],
   "vars": {
     "OPENAI_LIVE_MODEL": "gpt-live-1",

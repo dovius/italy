@@ -22,6 +22,7 @@ const server = app.listen(port, process.env.HOST || '0.0.0.0', () => {
 });
 async function shutdown() {
   await app.locals.closeSessions();
+  await app.locals.closeStats();
   server.close(() => process.exit(0));
   setTimeout(() => process.exit(0), 5000).unref();
 }

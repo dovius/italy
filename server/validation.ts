@@ -6,6 +6,8 @@ const message = z.object({
 });
 export const chatSchema = z.object({
   requestId: z.string().uuid(),
+  conversationId: z.string().uuid().optional(),
+  imageName: z.string().trim().max(250).optional(),
   mode: z.enum(['assistant', 'photo']),
   messages: z.array(message).min(1).max(30),
   image: z.string().max(6_000_000).regex(/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/]+=*$/).optional(),
@@ -21,3 +23,15 @@ export const sessionSchema = z.object({
 
 export const speechSchema = z.object({ text: z.string().trim().min(1).max(4096) });
 export const hangupSchema = z.object({ sessionId: z.string().min(1).max(200).regex(/^[A-Za-z0-9_-]+$/) });
+
+const transcript = z.object({
+  id: z.string().min(1).max(200),
+  session: z.string().min(1).max(200).regex(/^[A-Za-z0-9_-]+$/),
+  role: z.enum(['user', 'assistant']),
+  text: z.string().min(1).max(4000),
+  start: z.number().finite().min(0).max(86_400_000),
+  end: z.number().finite().min(0).max(86_400_000),
+}).refine(value => value.end >= value.start);
+export const liveFragmentsSchema = hangupSchema.extend({ fragments: z.array(transcript).max(80) })
+  .refine(value => value.fragments.every(fragment => fragment.session === value.sessionId))
+  .refine(value => value.fragments.reduce((sum, fragment) => sum + fragment.text.length, 0) <= 50_000);

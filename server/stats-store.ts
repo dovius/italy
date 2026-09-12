@@ -74,6 +74,8 @@ export class StatsStore {
   }
   append(id: string, fragments: TranscriptFragment[]) {
     return this.transaction(() => {
+      const usage = this.query('SELECT COUNT(*) AS count, COALESCE(SUM(length(text)), 0) AS size FROM stats_fragments WHERE event_id = ?', id)[0];
+      if (Number(usage.count) + fragments.length > 10_000 || Number(usage.size) + fragments.reduce((sum, fragment) => sum + fragment.text.length, 0) > 250_000) throw new Error('Caption storage limit');
       let inserted = 0;
       for (const fragment of fragments) {
         inserted += this.query('INSERT OR IGNORE INTO stats_fragments(event_id, id, role, text, start, end) VALUES (?, ?, ?, ?, ?, ?) RETURNING id', id, fragment.id, fragment.role, fragment.text, fragment.start, fragment.end).length;

@@ -2,14 +2,15 @@ import { DurableObject } from 'cloudflare:workers';
 import { createOpenAIRequest, requireKey, ServiceError } from '../server/openai';
 import { chatPayload, livePayload, speechPayload, transcriptionForm } from '../server/payloads';
 import { extractResponse } from '../server/response';
-import { chatSchema, hangupSchema, sessionSchema, speechSchema } from '../server/validation';
+import { chatSchema, hangupSchema, liveFragmentsSchema, sessionSchema, speechSchema } from '../server/validation';
 import type { ChatResult } from '../shared/types';
+import type { StatsCommand } from '../shared/stats';
 import type { Env } from './worker';
 import { digest, errorResponse, readJSON, readLimited } from './http';
 
 const MINUTE = 60_000;
 type CachedAnswer = { fingerprint: string; expires: number; result?: ChatResult };
-type LiveSession = { id: string; expires: number; retries: number };
+type LiveSession = { id: string; expires: number; retries: number; visitor: string; origin: string };
 type Rate = { expires: number; count: number; live: number };
 
 export class TripSession extends DurableObject<Env> {
@@ -20,6 +21,8 @@ export class TripSession extends DurableObject<Env> {
   async fetch(request: Request): Promise<Response> {
     try {
       const path = new URL(request.url).pathname;
+      const visitor = request.headers.get('x-trip-visitor')!;
+      const origin = request.headers.get('x-trip-origin')!;
       if (request.method !== 'POST') return new Response(null, { status: 405 });
       // End must remain available even after rate limits or key removal.
       if (path === '/api/live/end') {
@@ -27,9 +30,17 @@ export class TripSession extends DurableObject<Env> {
         await this.withLiveLock(() => this.closeSession(sessionId));
         return new Response(null, { status: 204 });
       }
+      if (path === '/api/live/fragments') {
+        await this.consumeRate(false);
+        const input = liveFragmentsSchema.parse(await readJSON(request, 250_000));
+        const session = await this.ctx.storage.get<{ expires: number }>(`captions:${input.sessionId}`);
+        if (!session || session.expires < Date.now()) throw new ServiceError(403, 'session_owner', 'Šis pokalbis nepriklauso šiai naršyklei.');
+        await this.capture({ action: 'fragments', visitor, ...input }, origin);
+        return new Response(null, { status: 204 });
+      }
       requireKey(this.env.OPENAI_API_KEY);
       await this.consumeRate(path === '/api/live/session');
-      if (path === '/api/chat') return Response.json(await this.chat(chatSchema.parse(await readJSON(request))));
+      if (path === '/api/chat') return Response.json(await this.chat(chatSchema.parse(await readJSON(request)), visitor, origin));
       if (path === '/api/live/session') {
         const input = sessionSchema.parse(await readJSON(request, 100_000));
         return await this.withLiveLock(async () => {
@@ -39,15 +50,18 @@ export class TripSession extends DurableObject<Env> {
           const data = await response.json() as { session?: { id?: string }; transport?: { sdp?: string } };
           const id = data.session?.id;
           if (!id || !/^[A-Za-z0-9_-]+$/.test(id) || !data.transport?.sdp) throw new ServiceError(502, 'invalid_session', 'Nepavyko pradėti pokalbio. Pabandykite dar kartą.');
-          const session: LiveSession = { id, expires: Date.now() + 30 * MINUTE, retries: 0 };
+          const session: LiveSession = { id, expires: Date.now() + 30 * MINUTE, retries: 0, visitor, origin };
           await this.ctx.storage.put(`live:${id}`, session);
+          await this.ctx.storage.put(`captions:${id}`, { expires: Date.now() + 40 * MINUTE });
           await this.schedule(session.expires);
+          await this.capture({ action: 'live', visitor, sessionId: id }, origin);
           return Response.json({ session: { id }, transport: { type: 'webrtc', sdp: data.transport.sdp } }, { status: 201 });
         });
       }
       if (path === '/api/speech') {
         const { text } = speechSchema.parse(await readJSON(request, 30_000));
         const response = await this.upstream('audio/speech', speechPayload(text, this.env));
+        await this.capture({ action: 'speech', visitor, text }, origin);
         // Stream MP3 bytes instead of buffering them in Worker memory.
         return new Response(response.body, { headers: { 'Content-Type': 'audio/mpeg' } });
       }
@@ -56,7 +70,7 @@ export class TripSession extends DurableObject<Env> {
     } catch (error) { return errorResponse(error); }
   }
 
-  private async chat(input: ReturnType<typeof chatSchema.parse>): Promise<ChatResult> {
+  private async chat(input: ReturnType<typeof chatSchema.parse>, visitor: string, origin: string): Promise<ChatResult> {
     const fingerprint = await digest(JSON.stringify(input));
     const pending = this.pending.get(input.requestId);
     if (pending) {
@@ -77,14 +91,19 @@ export class TripSession extends DurableObject<Env> {
       const expires = Date.now() + 2 * MINUTE;
       await this.ctx.storage.put(key, { fingerprint, expires } satisfies CachedAnswer);
       await this.schedule(expires);
+      await this.capture({ action: 'chat', visitor, requestId: input.requestId, conversationId: input.conversationId || input.requestId, mode: input.mode, text: input.messages.at(-1)!.text, image: input.image, imageName: input.imageName }, origin);
       try {
         const response = await this.upstream('responses', chatPayload(input, this.env));
         const result = extractResponse(await response.json());
         const completed = { fingerprint, result, expires: Date.now() + 10 * MINUTE };
         await this.ctx.storage.put(key, completed);
         await this.schedule(completed.expires);
+        await this.capture({ action: 'answer', visitor, requestId: input.requestId, ...result }, origin);
         return result;
-      } catch (error) { await this.ctx.storage.delete(key); throw error; }
+      } catch (error) {
+        await this.capture({ action: 'failure', visitor, requestId: input.requestId, error: error instanceof ServiceError ? error.message : 'Nepavyko gauti atsakymo.' }, origin);
+        await this.ctx.storage.delete(key); throw error;
+      }
     })();
     this.pending.set(input.requestId, { fingerprint, promise });
     try { return await promise; } finally { this.pending.delete(input.requestId); }
@@ -102,6 +121,7 @@ export class TripSession extends DurableObject<Env> {
     const response = await this.upstream('audio/transcriptions', transcriptionForm(audio, this.env));
     const data = await response.json() as { text?: string };
     if (!data.text?.trim()) throw new ServiceError(422, 'empty_audio', 'Neišgirdome klausimo. Kalbėkite arčiau telefono ir pabandykite dar kartą.');
+    await this.capture({ action: 'dictation', visitor: request.headers.get('x-trip-visitor')!, text: data.text.trim() }, request.headers.get('x-trip-origin')!);
     return Response.json({ text: data.text.trim() });
   }
 
@@ -119,6 +139,7 @@ export class TripSession extends DurableObject<Env> {
       const response = await this.upstream(`live/sessions/${encodeURIComponent(id)}/hangup`, undefined, 10_000);
       await response.body?.cancel();
       await this.ctx.storage.delete(key);
+      if (session.visitor) await this.capture({ action: 'end', visitor: session.visitor, sessionId: id }, session.origin);
     } catch {
       if (session.retries >= 3) { await this.ctx.storage.delete(key); return; }
       const retry = { ...session, retries: session.retries + 1, expires: Date.now() + 30_000 };
@@ -134,6 +155,17 @@ export class TripSession extends DurableObject<Env> {
     if (rate.count >= 60 || (live && rate.live >= 8)) throw new ServiceError(429, 'busy', 'Per daug užklausų. Palaukite minutę ir bandykite dar kartą.');
     await this.ctx.storage.put('rate', { ...rate, count: rate.count + 1, live: rate.live + Number(live) });
     await this.schedule(rate.expires);
+  }
+
+  private async capture(command: StatsCommand, origin: string) {
+    if (!this.env.STATS_ADMIN_PASSWORD) return;
+    try {
+      const response = await this.env.ACTIVITY_LOG.getByName('trip').fetch('https://activity.internal/record', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'x-trip-origin': origin }, body: JSON.stringify(command),
+      });
+      if (!response.ok) throw new Error('Activity storage unavailable');
+      await response.body?.cancel();
+    } catch { console.error('Nepavyko išsaugoti administravimo istorijos įrašo.'); }
   }
 
   private async schedule(at: number) {

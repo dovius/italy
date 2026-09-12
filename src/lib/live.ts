@@ -1,6 +1,8 @@
 import type { TranscriptFragment } from '../../shared/types';
 import { ApiError, mediaError, request } from './api';
 import { liveHistory } from './transcripts';
+import { CaptionReporter } from './captionReporter';
+import { ListeningGuard, type ListeningStopReason, type ListeningWarning } from './listeningGuard';
 
 export type LiveStatus = 'idle' | 'connecting' | 'connected' | 'reconnecting' | 'ended' | 'error';
 interface Callbacks {
@@ -10,9 +12,13 @@ interface Callbacks {
   blocked: (blocked: boolean) => void;
   level: (level: number) => void;
   history: () => TranscriptFragment[];
+  warning: (warning: ListeningWarning | null) => void;
+  stopped: (reason: ListeningStopReason | null) => void;
 }
 
 export class LiveConversation {
+  private safety: ListeningGuard;
+  private captions = new CaptionReporter();
   private peer: RTCPeerConnection | null = null;
   private channel: RTCDataChannel | null = null;
   private microphone: MediaStream | null = null;
@@ -31,21 +37,36 @@ export class LiveConversation {
   private ready = false;
 
   constructor(private audio: HTMLAudioElement, private callbacks: Callbacks) {
+    this.safety = new ListeningGuard(callbacks.warning, (reason) => this.stopForSafety(reason));
     window.addEventListener('online', this.online);
     window.addEventListener('trip:online', this.online);
     window.addEventListener('offline', this.offline);
     window.addEventListener('pagehide', this.pagehide);
+    document.addEventListener('visibilitychange', this.visibility);
   }
   private online = () => { if (this.wanted && !this.peer) { clearTimeout(this.retryTimer); this.tries = 0; void this.connect(true); } };
   private offline = () => { if (this.wanted) this.reconnect(); };
-  private pagehide = () => { this.end(true); };
+  private pagehide = () => { if (this.wanted) this.stopForSafety('hidden'); else this.end(true); };
+  private visibility = () => { if (document.visibilityState === 'hidden' && this.wanted) this.stopForSafety('hidden'); };
+
+  private stopForSafety(reason: ListeningStopReason) {
+    if (!this.wanted) return;
+    this.callbacks.stopped(reason);
+    this.callbacks.error('');
+    // Release capture and close the peer synchronously, before mobile browsers
+    // can suspend this page. Never restart automatically when it becomes visible.
+    this.end(true);
+  }
+
+  continueListening() { this.safety.confirm(); }
 
   async start() {
-    if (this.wanted) return;
+    if (this.wanted || document.visibilityState === 'hidden') return;
     this.cleanup();
     this.wanted = true;
     this.tries = 0;
     this.callbacks.error('');
+    this.callbacks.stopped(null);
     // Audio playback is also retried from an explicit accessible button if iOS blocks it.
     this.audio.autoplay = true;
     await this.connect(false);
@@ -69,6 +90,7 @@ export class LiveConversation {
       const microphone = existing || await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
       if (run !== this.run || !this.wanted) { microphone.getTracks().forEach((t) => t.stop()); return; }
       this.microphone = microphone;
+      this.safety.start();
       microphone.getAudioTracks().forEach((t) => { t.enabled = !this.muted; });
       if (!this.audioContext) this.meter(microphone);
       peer = new RTCPeerConnection();
@@ -102,7 +124,11 @@ export class LiveConversation {
           this.callbacks.error('');
         } else if (event.type === 'session.input_transcript.delta' || event.type === 'session.output_transcript.delta') {
           if (typeof event.delta !== 'string' || typeof event.start_ms !== 'number' || typeof event.end_ms !== 'number') return;
-          this.callbacks.fragment({ id: typeof event.event_id === 'string' ? event.event_id : crypto.randomUUID(), session: this.id || `connection-${run}`, role: event.type === 'session.input_transcript.delta' ? 'user' : 'assistant', text: event.delta, start: event.start_ms, end: event.end_ms });
+          // Speech captions, rather than microphone volume, count as activity.
+          if (event.delta.trim()) this.safety.heardSpeech();
+          const fragment: TranscriptFragment = { id: typeof event.event_id === 'string' ? event.event_id : crypto.randomUUID(), session: this.id || `connection-${run}`, role: event.type === 'session.input_transcript.delta' ? 'user' : 'assistant', text: event.delta, start: event.start_ms, end: event.end_ms };
+          this.callbacks.fragment(fragment);
+          if (this.id) this.captions.add(fragment);
         } else if (event.type === 'session.closed') {
           const reconnect = this.wanted && ['connection_error', 'connection_lost', 'transport_error'].includes(String(event.reason));
           if (reconnect) this.reconnect();
@@ -194,10 +220,14 @@ export class LiveConversation {
   }
   private hangup(id: string, beacon = false) {
     const data = JSON.stringify({ sessionId: id });
-    if (beacon && navigator.sendBeacon) { navigator.sendBeacon('/api/live/end', new Blob([data], { type: 'application/json' })); return; }
+    if (beacon && navigator.sendBeacon) {
+      try { if (navigator.sendBeacon('/api/live/end', new Blob([data], { type: 'application/json' }))) return; } catch { /* Try a keepalive request if the beacon cannot be queued. */ }
+    }
     void fetch('/api/live/end', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: data, keepalive: true }).catch(() => {});
   }
   end(beacon = false) {
+    this.safety.stop();
+    void this.captions.flush(beacon);
     this.wanted = false;
     clearTimeout(this.retryTimer);
     this.callbacks.status('ended');
@@ -206,11 +236,14 @@ export class LiveConversation {
     this.audio.pause();
     if (beacon) { if (this.id) this.hangup(this.id, true); this.cleanup(false); return; }
     if (this.ready && this.channel?.readyState === 'open') {
-      this.channel.send(JSON.stringify({ type: 'session.close' }));
-      this.closeTimer = setTimeout(() => this.cleanup(), 4000);
+      try {
+        this.channel.send(JSON.stringify({ type: 'session.close' }));
+        this.closeTimer = setTimeout(() => this.cleanup(), 4000);
+      } catch { this.cleanup(); }
     } else this.cleanup();
   }
   private cleanup(hangup = true, keepCapture = false) {
+    void this.captions.flush();
     this.run++;
     this.ready = false;
     this.abort?.abort();
@@ -219,6 +252,7 @@ export class LiveConversation {
     clearTimeout(this.startupTimer);
     clearTimeout(this.closeTimer);
     if (!keepCapture) {
+      this.safety.stop();
       clearInterval(this.analyserTimer);
       this.microphone?.getTracks().forEach((track) => track.stop());
       this.microphone = null;
@@ -238,9 +272,11 @@ export class LiveConversation {
   dispose() {
     this.wanted = false;
     this.cleanup();
+    this.captions.dispose();
     window.removeEventListener('online', this.online);
     window.removeEventListener('trip:online', this.online);
     window.removeEventListener('offline', this.offline);
     window.removeEventListener('pagehide', this.pagehide);
+    document.removeEventListener('visibilitychange', this.visibility);
   }
 }

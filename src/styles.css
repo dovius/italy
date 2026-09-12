@@ -237,6 +237,11 @@ a { color: var(--rust); text-underline-offset: 3px; overflow-wrap: anywhere; }
 .install-symbol { width: 72px; height: 72px; display: grid; place-items: center; background: #e8ebdf; color: var(--olive); border-radius: 21px; margin: 22px 0; }
 .install-instructions { margin-bottom: 25px; }.install-instructions h3:not(:first-child) { margin-top: 25px; }
 .dialog-actions { display: flex; justify-content: flex-end; gap: 13px; }
+.listening-warning { max-width: 440px; }
+.listening-warning .modal-lead { margin-bottom: 18px; }
+.listening-countdown { padding: 18px; margin-bottom: 20px; border: 1px solid #e6c5b7; border-radius: 12px; background: #f4e4dd; color: #783325; font-size: 18px; text-align: center; }
+.listening-countdown strong { display: block; font-size: 40px; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.listening-actions { display: grid; gap: 10px; }
 .translation-modal { max-width: none; max-height: none; width: 100%; height: 100dvh; margin: 0; border: none; border-radius: 0; background: #fffdf5; }
 .translation-modal .modal-inner { height: 100%; padding: max(25px, env(safe-area-inset-top)) max(25px, env(safe-area-inset-right)) max(25px, env(safe-area-inset-bottom)) max(25px, env(safe-area-inset-left)); display: flex; flex-direction: column; max-width: 1200px; margin: auto; }
 .translation-modal .modal-heading h2 { font: 550 20px var(--sans); color: var(--muted); }
@@ -331,6 +336,7 @@ a { color: var(--rust); text-underline-offset: 3px; overflow-wrap: anywhere; }
   .live-page .back-button { margin: 0 0 0 -8px; }
   .live-page .screen-heading .eyebrow, .live-page .screen-heading > p { display: none; }
   .live-page .screen-heading h1 { margin: 0; font-size: 28px; text-align: right; }
+  .live-page[data-status="ended"] .language-strip { display: none; }
   .language-strip { min-height: 50px; padding: 8px 14px; }
   .language-strip > span { line-height: 1.4; }
   .language-strip .language-arrows { line-height: 1; }
